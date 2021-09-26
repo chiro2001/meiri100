@@ -1,0 +1,564 @@
+{
+  "periodList": [
+    {
+      "periodId": "11:00:00,17:00:00",
+      "periodDesc": "11:00-17:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747554041,
+            "price": 56.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554044,
+            "price": 106.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554065,
+            "price": 106.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747554042,
+            "price": 66.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554045,
+            "price": 116.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554067,
+            "price": 116.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747554043,
+            "price": 76.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554046,
+            "price": 126.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554068,
+            "price": 126.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    },
+    {
+      "periodId": "11:00:00,20:00:00",
+      "periodDesc": "11:00-20:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747931171,
+            "price": 86.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931180,
+            "price": 156.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931177,
+            "price": 156.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747931172,
+            "price": 96.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931178,
+            "price": 166.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931181,
+            "price": 166.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747931173,
+            "price": 106.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931179,
+            "price": 176.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931182,
+            "price": 176.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    },
+    {
+      "periodId": "17:00:00,20:00:00",
+      "periodDesc": "17:00-20:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747554047,
+            "price": 66.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554050,
+            "price": 106.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554066,
+            "price": 106.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747554048,
+            "price": 76.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554052,
+            "price": 116.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554070,
+            "price": 116.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747554049,
+            "price": 86.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554051,
+            "price": 126.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554069,
+            "price": 126.0,
+            "foodDesc": "饮料红茶/绿茶4瓶+麻辣花生米1份+兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    },
+    {
+      "periodId": "18:00:00,02:00:00",
+      "periodDesc": "18:00-次日02:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747931219,
+            "price": 326.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931229,
+            "price": 516.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931241,
+            "price": 516.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747931220,
+            "price": 356.0,
+            "merchantPrice": 386.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931233,
+            "price": 626.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931245,
+            "price": 626.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747931221,
+            "price": 386.0,
+            "merchantPrice": 496.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931237,
+            "price": 726.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931249,
+            "price": 726.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    },
+    {
+      "periodId": "20:00:00,23:00:00",
+      "periodDesc": "20:00-23:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747931174,
+            "price": 296.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931183,
+            "price": 486.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747931175,
+            "price": 366.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931184,
+            "price": 596.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747931176,
+            "price": 466.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747931185,
+            "price": 696.0,
+            "foodDesc": "12支百威红瓶+麻辣花生米1份+多味瓜子1份+牛肉味兰花豆2份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    },
+    {
+      "periodId": "23:00:00,02:00:00",
+      "periodDesc": "23:00-次日02:00包段",
+      "singHours": 3,
+      "periodType": 0,
+      "roomMapItemEntry": {
+        "小包": [
+          {
+            "itemId": 747554056,
+            "price": 136.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554062,
+            "price": 266.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554077,
+            "price": 266.0,
+            "foodDesc": "青岛天猫6瓶，麻辣花生米1份，牛肉味兰花豆1份，多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 6,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "中包": [
+          {
+            "itemId": 747554057,
+            "price": 166.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554063,
+            "price": 296.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554078,
+            "price": 296.0,
+            "foodDesc": "青岛天猫6瓶，麻辣花生米1份，牛肉味兰花豆1份，多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 4,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ],
+        "大包": [
+          {
+            "itemId": 747554058,
+            "price": 196.0,
+            "foodDesc": "纯唱",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554064,
+            "price": 326.0,
+            "foodDesc": "茶水1壶+麻辣花生米1份+牛肉味兰花豆1份+多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          },
+          {
+            "itemId": 747554079,
+            "price": 326.0,
+            "foodDesc": "青岛天猫6瓶，麻辣花生米1份，牛肉味兰花豆1份，多味瓜子1份（注：谢绝自带酒水食品小吃）",
+            "singHours": 3,
+            "stock": 5,
+            "itemType": 0,
+            "periodType": 0
+          }
+        ]
+      }
+    }
+  ],
+  "roomList": [
+    {
+      "roomName": "小包",
+      "roomCapacity": "2~4人"
+    },
+    {
+      "roomName": "中包",
+      "roomCapacity": "4~8人"
+    },
+    {
+      "roomName": "大包",
+      "roomCapacity": "8~12人"
+    }
+  ],
+  "isSpecialDate": false
+}

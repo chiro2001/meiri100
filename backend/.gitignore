@@ -1,0 +1,7 @@
+./dist
+./old
+
+secrets.py
+
+*.log*
+*.log

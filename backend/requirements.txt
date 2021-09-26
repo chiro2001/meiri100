@@ -1,0 +1,16 @@
+pyDes
+flask
+requests
+selenium
+flask_cors
+colorlog
+psutil
+pymongo
+lxml
+pyinstaller
+apscheduler
+flask-restful
+itsdangerous
+pytz
+websocket-client
+cos-python-sdk-v5

@@ -1,0 +1,434 @@
+{
+  "code": 0,
+  "msg": null,
+  "storeKey": null,
+  "data": [
+    {
+      "componentId": "historyDataAnalysisPC",
+      "templateId": "historyDataAnalysis",
+      "success": true,
+      "canShow": true,
+      "message": null,
+      "head": null,
+      "body": {
+        "data": [
+          {
+            "date": "06-12",
+            "tagName": "\u6bcf\u65e5\u89e3\u8bfb",
+            "items": [
+              {
+                "date": "06-12",
+                "processId": "shop_uv",
+                "shopIds": "1164657484",
+                "text": "\u8bbf\u95ee\u4eba\u6570\u8f83\u524d\u5929\u4e0a\u6da8<i class=\"up\">93%</i>\uff0c\u4e3b\u8981\u7531\u624b\u673a\u7aef\u8bbf\u95ee\u4eba\u6570\u8f83\u524d\u5929\u4e0a\u6da8<i class=\"up\">97%</i>\u5f15\u8d77",
+                "tagName": "\u6bcf\u65e5\u89e3\u8bfb",
+                "title": "\u6d41\u91cf",
+                "type": "anchor",
+                "exts": {
+                  "componentId": "flowTablePC",
+                  "sortType": "3",
+                  "typeIds": "2",
+                  "date": "2021-06-12,2021-06-12"
+                },
+                "url": ""
+              }
+            ]
+          }
+        ]
+      },
+      "noData": true,
+      "exts": null,
+      "extsStr": null,
+      "bodyStr": "{\"data\":[{\"date\":\"06-12\",\"tagName\":\"\u6bcf\u65e5\u89e3\u8bfb\",\"items\":[{\"date\":\"06-12\",\"processId\":\"shop_uv\",\"shopIds\":\"1164657484\",\"text\":\"\u8bbf\u95ee\u4eba\u6570\u8f83\u524d\u5929\u4e0a\u6da8<i class=\\\"up\\\">93%</i>\uff0c\u4e3b\u8981\u7531\u624b\u673a\u7aef\u8bbf\u95ee\u4eba\u6570\u8f83\u524d\u5929\u4e0a\u6da8<i class=\\\"up\\\">97%</i>\u5f15\u8d77\",\"tagName\":\"\u6bcf\u65e5\u89e3\u8bfb\",\"title\":\"\u6d41\u91cf\",\"type\":\"anchor\",\"exts\":{\"componentId\":\"flowTablePC\",\"sortType\":\"3\",\"typeIds\":\"2\",\"date\":\"2021-06-12,2021-06-12\"},\"url\":\"\"}]}]}"
+    },
+    {
+      "componentId": "flowFunnelPC",
+      "templateId": "funnel",
+      "success": true,
+      "canShow": true,
+      "message": null,
+      "head": {
+        "name": "\u6d41\u91cf\u6f0f\u6597\u5206\u6790",
+        "dateDesc": "04/01-05/01",
+        "descContent": {
+          "title": "\u6307\u6807\u89e3\u91ca",
+          "content": [
+            {
+              "title": "",
+              "content": "400\u7535\u8bdd\u65e0\u6cd5\u533a\u5206\u5e73\u53f0\uff0c\u56e0\u6b64\u4ec5\u5728\u53cc\u5e73\u53f0\u7ef4\u5ea6\u4e0b\u5c55\u793a400\u7535\u8bdd\u6570"
+            }
+          ]
+        },
+        "externalLink": {
+          "name": "\u6559\u4f60\u5982\u4f55\u5f15\u7206\u6d41\u91cf\uff0c\u70b9\u51fb\u8fd9\u91cc>>>",
+          "url": "https://e.dianping.com/app/merchant-platform/96363e511fc64b8?iUrl=Ly9tLmRpYW5waW5nLmNvbS9hd3AvbmliZmUvdmctcGMtYnVzaW5lc3MtY29sbGVnZS9kZXRhaWwuaHRtbD9jb3Vyc2VJRD00MDcmcGFnZUlkPTk2MzYzZTUxMWZjNjRiOA"
+        }
+      },
+      "body": [
+        {
+          "data": [
+            {
+              "name": "\u66dd\u5149\u4eba\u6570",
+              "typeName": "\u53d1\u73b0\u95e8\u5e97",
+              "color": "",
+              "value": "7.3\u4e07"
+            },
+            {
+              "name": "\u8bbf\u95ee\u4eba\u6570",
+              "typeName": "\u6d4f\u89c8\u95e8\u5e97",
+              "color": "",
+              "value": "1.2\u4e07"
+            },
+            {
+              "name": "\u610f\u5411\u8f6c\u5316\u4eba\u6570",
+              "typeName": "\u610f\u5411\u8f6c\u5316",
+              "detail": {
+                "desc": "\u610f\u5411\u8f6c\u5316\u7edf\u8ba1\u7528\u6237\u4e0b\u5355\u548c\u7559\u54a8\u884c\u4e3a",
+                "items": [
+                  {
+                    "name": "\u4e0b\u5355\u4eba\u6570",
+                    "value": "1,114"
+                  },
+                  {
+                    "name": "\u5728\u7ebf\u9884\u7ea6\u4eba\u6570",
+                    "value": "0"
+                  },
+                  {
+                    "name": "\u5728\u7ebf\u54a8\u8be2\u7559\u54a8\u4eba\u6570",
+                    "value": "0"
+                  },
+                  {
+                    "name": "400\u7535\u8bdd\u6570",
+                    "value": "0"
+                  }
+                ]
+              },
+              "color": "",
+              "detailBtnName": "\u8be6\u60c5",
+              "value": "1,114"
+            }
+          ],
+          "sideData": [
+            {
+              "name": "\u66dd\u5149\u8bbf\u95ee\u8f6c\u5316\u7387",
+              "value": "16.22%",
+              "subContent": [
+                {
+                  "name": "\u540c\u884c\u5747\u503c",
+                  "value": "17.35%"
+                },
+                {
+                  "name": "\u540c\u884c\u4f18\u79c0\u503c",
+                  "value": "22.72%"
+                }
+              ]
+            },
+            {
+              "name": "\u610f\u5411\u8f6c\u5316\u7387",
+              "value": "9.44%",
+              "subContent": [
+                {
+                  "name": "\u540c\u884c\u5747\u503c",
+                  "value": "8.23%"
+                },
+                {
+                  "name": "\u540c\u884c\u4f18\u79c0\u503c",
+                  "value": "13.66%"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noData": true,
+      "exts": null,
+      "extsStr": null,
+      "bodyStr": "[{\"data\":[{\"name\":\"\u66dd\u5149\u4eba\u6570\",\"typeName\":\"\u53d1\u73b0\u95e8\u5e97\",\"color\":\"\",\"value\":\"7.3\u4e07\"},{\"name\":\"\u8bbf\u95ee\u4eba\u6570\",\"typeName\":\"\u6d4f\u89c8\u95e8\u5e97\",\"color\":\"\",\"value\":\"1.2\u4e07\"},{\"name\":\"\u610f\u5411\u8f6c\u5316\u4eba\u6570\",\"typeName\":\"\u610f\u5411\u8f6c\u5316\",\"detail\":{\"desc\":\"\u610f\u5411\u8f6c\u5316\u7edf\u8ba1\u7528\u6237\u4e0b\u5355\u548c\u7559\u54a8\u884c\u4e3a\",\"items\":[{\"name\":\"\u4e0b\u5355\u4eba\u6570\",\"value\":\"1,114\"},{\"name\":\"\u5728\u7ebf\u9884\u7ea6\u4eba\u6570\",\"value\":\"0\"},{\"name\":\"\u5728\u7ebf\u54a8\u8be2\u7559\u54a8\u4eba\u6570\",\"value\":\"0\"},{\"name\":\"400\u7535\u8bdd\u6570\",\"value\":\"0\"}]},\"color\":\"\",\"detailBtnName\":\"\u8be6\u60c5\",\"value\":\"1,114\"}],\"sideData\":[{\"name\":\"\u66dd\u5149\u8bbf\u95ee\u8f6c\u5316\u7387\",\"value\":\"16.22%\",\"subContent\":[{\"name\":\"\u540c\u884c\u5747\u503c\",\"value\":\"17.35%\"},{\"name\":\"\u540c\u884c\u4f18\u79c0\u503c\",\"value\":\"22.72%\"}]},{\"name\":\"\u610f\u5411\u8f6c\u5316\u7387\",\"value\":\"9.44%\",\"subContent\":[{\"name\":\"\u540c\u884c\u5747\u503c\",\"value\":\"8.23%\"},{\"name\":\"\u540c\u884c\u4f18\u79c0\u503c\",\"value\":\"13.66%\"}]}]}]"
+    },
+    {
+      "componentId": "flowDataSummaryPC",
+      "templateId": "optionSummary",
+      "success": true,
+      "canShow": true,
+      "message": null,
+      "head": {
+        "name": "\u53d8\u5316\u8d8b\u52bf",
+        "dateDesc": "04/01-05/01",
+        "download": {
+          "name": "\u4e0b\u8f7d\u660e\u7ec6\u8868\u683c",
+          "url": "/gateway/mda/defaultData?componentId=flowDataSummaryDownloadPC&feature=33f4699562"
+        }
+      },
+      "body": {
+        "data": [
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+51%"
+              }
+            ],
+            "name": "\u66dd\u5149\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u5728\u5217\u8868\u9875\u3001APP\u9996\u9875\u63a8\u8350\u7b49\u5904\u770b\u5230\u5e97\u94fa\u7684\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 1,
+            "suffix": "\u4eba",
+            "value": "7.3\u4e07",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+47%"
+              }
+            ],
+            "name": "\u8bbf\u95ee\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u5e97\u94fa\u8be6\u60c5\u9875\u7684\u8bbf\u95ee\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 2,
+            "suffix": "\u4eba",
+            "value": "1.2\u4e07",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "2",
+                "color": "#189942",
+                "value": "-3%"
+              }
+            ],
+            "name": "\u66dd\u5149\u8bbf\u95ee\u8f6c\u5316\u7387",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u8bbf\u95ee\u4eba\u6570/\u66dd\u5149\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 3,
+            "suffix": "%",
+            "value": "16.22",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+62%"
+              }
+            ],
+            "name": "\u610f\u5411\u8f6c\u5316\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u8d2d\u4e70\u5e97\u94fa\u5546\u54c1\uff0c\u4ee5\u53ca\u6709\u610f\u5411\u5e76\u9884\u7ea6\u7684\u603b\u4eba\u6570\uff0c\u5305\u542b\u4e0b\u5355\u4eba\u6570\u3001400\u7535\u8bdd\u6570\u3001\u5728\u7ebf\u9884\u7ea6\u5e76\u63d0\u4ea4\u7535\u8bdd\u4eba\u6570\u548c\u7ebf\u4e0a\u54a8\u8be2\u5e76\u9884\u7ea6\u6570"
+                }
+              ]
+            },
+            "typeId": 4,
+            "suffix": "\u4eba",
+            "value": "1,114",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+10%"
+              }
+            ],
+            "name": "\u610f\u5411\u8f6c\u5316\u7387",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u610f\u5411\u8f6c\u5316\u4eba\u6570/\u8bbf\u95ee\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 5,
+            "suffix": "%",
+            "value": "9.44",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+62%"
+              }
+            ],
+            "name": "\u4e0b\u5355\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u8d2d\u4e70\u5e97\u94fa\u5546\u54c1\u6216\u670d\u52a1\u7684\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 6,
+            "suffix": "\u4eba",
+            "value": "1,114",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "color": "#666666",
+                "name": "\u73af\u6bd4",
+                "value": "--"
+              }
+            ],
+            "name": "\u5728\u7ebf\u9884\u7ea6\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u5728\u7ebf\u9884\u7ea6\u5e76\u63d0\u4ea4\u7535\u8bdd\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 7,
+            "suffix": "\u4eba",
+            "value": "0",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "color": "#666666",
+                "name": "\u73af\u6bd4",
+                "value": "--"
+              }
+            ],
+            "name": "\u5728\u7ebf\u54a8\u8be2\u7559\u54a8\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u4f7f\u7528\u5728\u7ebf\u54a8\u8be2\u5e76\u9884\u7ea6\u7684\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 8,
+            "suffix": "\u4eba",
+            "value": "0",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "color": "#666666",
+                "name": "\u73af\u6bd4",
+                "value": "--"
+              }
+            ],
+            "name": "400\u7535\u8bdd\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u901a\u8fc7400\u7535\u8bdd\u6c9f\u901a\u5e76\u7559\u4e0b\u8054\u7cfb\u7535\u8bdd\u7684\u7528\u6237\u6570"
+                }
+              ]
+            },
+            "typeId": 9,
+            "suffix": "\u4eba",
+            "value": "0",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+59%"
+              }
+            ],
+            "name": "\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570\u3002\u56e0\u7528\u6237\u6709\u53d6\u6d88\u6536\u85cf\u884c\u4e3a\uff0c\u56e0\u6b64\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570\u5b58\u5728\u4e0a\u4e0b\u6ce2\u52a8\u3002"
+                }
+              ]
+            },
+            "typeId": 10,
+            "suffix": "\u4eba",
+            "value": "839",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          },
+          {
+            "sub": [
+              {
+                "name": "\u73af\u6bd4",
+                "flag": "1",
+                "color": "#E71616",
+                "value": "+52%"
+              }
+            ],
+            "name": "\u65b0\u589e\u6536\u85cf\u4eba\u6570",
+            "descContent": {
+              "title": "",
+              "content": [
+                {
+                  "title": "",
+                  "content": "\u65b0\u589e\u6536\u85cf\u4eba\u6570"
+                }
+              ]
+            },
+            "typeId": 11,
+            "suffix": "\u4eba",
+            "value": "374",
+            "url": "/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec"
+          }
+        ]
+      },
+      "noData": true,
+      "exts": null,
+      "extsStr": null,
+      "bodyStr": "{\"data\":[{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+51%\"}],\"name\":\"\u66dd\u5149\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u5728\u5217\u8868\u9875\u3001APP\u9996\u9875\u63a8\u8350\u7b49\u5904\u770b\u5230\u5e97\u94fa\u7684\u4eba\u6570\"}]},\"typeId\":1,\"suffix\":\"\u4eba\",\"value\":\"7.3\u4e07\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+47%\"}],\"name\":\"\u8bbf\u95ee\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u5e97\u94fa\u8be6\u60c5\u9875\u7684\u8bbf\u95ee\u4eba\u6570\"}]},\"typeId\":2,\"suffix\":\"\u4eba\",\"value\":\"1.2\u4e07\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"2\",\"color\":\"#189942\",\"value\":\"-3%\"}],\"name\":\"\u66dd\u5149\u8bbf\u95ee\u8f6c\u5316\u7387\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u8bbf\u95ee\u4eba\u6570/\u66dd\u5149\u4eba\u6570\"}]},\"typeId\":3,\"suffix\":\"%\",\"value\":\"16.22\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+62%\"}],\"name\":\"\u610f\u5411\u8f6c\u5316\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u8d2d\u4e70\u5e97\u94fa\u5546\u54c1\uff0c\u4ee5\u53ca\u6709\u610f\u5411\u5e76\u9884\u7ea6\u7684\u603b\u4eba\u6570\uff0c\u5305\u542b\u4e0b\u5355\u4eba\u6570\u3001400\u7535\u8bdd\u6570\u3001\u5728\u7ebf\u9884\u7ea6\u5e76\u63d0\u4ea4\u7535\u8bdd\u4eba\u6570\u548c\u7ebf\u4e0a\u54a8\u8be2\u5e76\u9884\u7ea6\u6570\"}]},\"typeId\":4,\"suffix\":\"\u4eba\",\"value\":\"1,114\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+10%\"}],\"name\":\"\u610f\u5411\u8f6c\u5316\u7387\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u610f\u5411\u8f6c\u5316\u4eba\u6570/\u8bbf\u95ee\u4eba\u6570\"}]},\"typeId\":5,\"suffix\":\"%\",\"value\":\"9.44\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+62%\"}],\"name\":\"\u4e0b\u5355\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u8d2d\u4e70\u5e97\u94fa\u5546\u54c1\u6216\u670d\u52a1\u7684\u4eba\u6570\"}]},\"typeId\":6,\"suffix\":\"\u4eba\",\"value\":\"1,114\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"color\":\"#666666\",\"name\":\"\u73af\u6bd4\",\"value\":\"--\"}],\"name\":\"\u5728\u7ebf\u9884\u7ea6\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u5728\u7ebf\u9884\u7ea6\u5e76\u63d0\u4ea4\u7535\u8bdd\u4eba\u6570\"}]},\"typeId\":7,\"suffix\":\"\u4eba\",\"value\":\"0\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"color\":\"#666666\",\"name\":\"\u73af\u6bd4\",\"value\":\"--\"}],\"name\":\"\u5728\u7ebf\u54a8\u8be2\u7559\u54a8\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u4f7f\u7528\u5728\u7ebf\u54a8\u8be2\u5e76\u9884\u7ea6\u7684\u4eba\u6570\"}]},\"typeId\":8,\"suffix\":\"\u4eba\",\"value\":\"0\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"color\":\"#666666\",\"name\":\"\u73af\u6bd4\",\"value\":\"--\"}],\"name\":\"400\u7535\u8bdd\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u901a\u8fc7400\u7535\u8bdd\u6c9f\u901a\u5e76\u7559\u4e0b\u8054\u7cfb\u7535\u8bdd\u7684\u7528\u6237\u6570\"}]},\"typeId\":9,\"suffix\":\"\u4eba\",\"value\":\"0\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+59%\"}],\"name\":\"\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570\u3002\u56e0\u7528\u6237\u6709\u53d6\u6d88\u6536\u85cf\u884c\u4e3a\uff0c\u56e0\u6b64\u7d2f\u8ba1\u6536\u85cf\u4eba\u6570\u5b58\u5728\u4e0a\u4e0b\u6ce2\u52a8\u3002\"}]},\"typeId\":10,\"suffix\":\"\u4eba\",\"value\":\"839\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"},{\"sub\":[{\"name\":\"\u73af\u6bd4\",\"flag\":\"1\",\"color\":\"#E71616\",\"value\":\"+52%\"}],\"name\":\"\u65b0\u589e\u6536\u85cf\u4eba\u6570\",\"descContent\":{\"title\":\"\",\"content\":[{\"title\":\"\",\"content\":\"\u65b0\u589e\u6536\u85cf\u4eba\u6570\"}]},\"typeId\":11,\"suffix\":\"\u4eba\",\"value\":\"374\",\"url\":\"/gateway/mda/defaultData?componentId=flowDataTendencyPC&feature=20e04d5dec\"}]}"
+    }
+  ],
+  "success": true
+}

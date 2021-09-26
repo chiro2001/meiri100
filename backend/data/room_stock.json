@@ -1,0 +1,1437 @@
+[
+  {
+    "reserveDate": 1616688000000,
+    "remainCount": 7,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 5,
+        "acceptOrder": true,
+        "beginDate": 1616727600000,
+        "endDate": 1616749200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "8069a0493f5e0abafa8e9a812e32c341",
+            "reserveDate": 1616688000000,
+            "saleCount": 5,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "ddb0687329b427425204bde03e57789d",
+            "reserveDate": 1616688000000,
+            "saleCount": 2,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "69e1f1704879fa73cbc688a5fda89fba",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 0,
+        "acceptOrder": false,
+        "beginDate": 1616727600000,
+        "endDate": 1616760000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "922a89aa6dc6b02cfc850594e76b7f70",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "a6c0ab642c9daf714087547d117cf2b5",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "09faa307083ddcae35432de06e815ae0",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 2,
+        "acceptOrder": true,
+        "beginDate": 1616749200000,
+        "endDate": 1616760000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "fd19c604f49e0ff35c09515ecc188165",
+            "reserveDate": 1616688000000,
+            "saleCount": 6,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "166d8f9867926de647f39affc9a7b501",
+            "reserveDate": 1616688000000,
+            "saleCount": 4,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "7e5dcb1a124e2f00ef87891d6cbe9259",
+            "reserveDate": 1616688000000,
+            "saleCount": 1,
+            "remainCount": 2,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 0,
+        "acceptOrder": false,
+        "beginDate": 1616752800000,
+        "endDate": 1616781600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "0b7015a29fdc14a19a04d299d368cf59",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "1465a53fb3f8d242681ed1ee5a9bd31a",
+            "reserveDate": 1616688000000,
+            "saleCount": 1,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "c2c5ae22d9db55fa9e9e42cca34bc707",
+            "reserveDate": 1616688000000,
+            "saleCount": 1,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 0,
+        "acceptOrder": true,
+        "beginDate": 1616760000000,
+        "endDate": 1616770800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "b3322b234b0fc545a004b6aa4c02c62c",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "956c508db656ff0343f25060ad2fa9c7",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "c31d4a82190c0b8b89489cecd8ee9685",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 0,
+        "acceptOrder": false,
+        "beginDate": 1616770800000,
+        "endDate": 1616781600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "05b4459e7e65de522bcce7a172e49458",
+            "reserveDate": 1616688000000,
+            "saleCount": 1,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "98c1cc4c22542fd5c95e6393db73f78e",
+            "reserveDate": 1616688000000,
+            "saleCount": 2,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "d50a9444e5d1b05e9aa25c3dee926a38",
+            "reserveDate": 1616688000000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1616774400000,
+    "remainCount": 27,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 5,
+        "acceptOrder": true,
+        "beginDate": 1616814000000,
+        "endDate": 1616835600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "3d2fb460a88ecdfacc78718590200466",
+            "reserveDate": 1616774400000,
+            "saleCount": 5,
+            "remainCount": 0,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "262262ca59d26f468f57362d23336906",
+            "reserveDate": 1616774400000,
+            "saleCount": 3,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "8b31d3b05a9dcac84df019d5c55c60ec",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 5,
+        "acceptOrder": true,
+        "beginDate": 1616814000000,
+        "endDate": 1616846400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "bbf4e36a13bb2545c1bbe03ceb32c5be",
+            "reserveDate": 1616774400000,
+            "saleCount": 1,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "60814b1e1a3ebe28d576506615c856f0",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "6c2fa938b5eb76dc8e3ce8514ef69386",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 10,
+        "acceptOrder": true,
+        "beginDate": 1616835600000,
+        "endDate": 1616846400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "66cfd974e327c07742b3f63aa0e8a807",
+            "reserveDate": 1616774400000,
+            "saleCount": 2,
+            "remainCount": 3,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "227807711b3d2afe13fbeb2826514510",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 3,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "9bbc766fc712e72ef66a8ef6942db1fe",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 0,
+        "acceptOrder": false,
+        "beginDate": 1616839200000,
+        "endDate": 1616868000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "92f2b81d954dac7223e16262d08d3d8a",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "ac4f034973d51ade06eda3ac5af460b0",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "c590bc708e874c0dbf9fc8db72222c7c",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 0,
+        "acceptOrder": false,
+        "beginDate": 1616846400000,
+        "endDate": 1616857200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "70044ae24b7a8cb5787ec760b34d91ac",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "8c7ea29b368737df80964a20032c85b0",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "6e6bdb30f16696e5849146909d55b4ed",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 0,
+            "acceptOrder": false
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 7,
+        "acceptOrder": true,
+        "beginDate": 1616857200000,
+        "endDate": 1616868000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "2bb3700f9231f55ff54065767cac343c",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 3,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "8de50936767b71a9f2577d3671ed24ac",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 2,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "8fce0df65433a4c8e6c46ba9d1c0185b",
+            "reserveDate": 1616774400000,
+            "saleCount": 0,
+            "remainCount": 2,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1616860800000,
+    "remainCount": 86,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 14,
+        "acceptOrder": true,
+        "beginDate": 1616900400000,
+        "endDate": 1616922000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "727a83d532a73747a923fd7ca61d68ed",
+            "reserveDate": 1616860800000,
+            "saleCount": 1,
+            "remainCount": 5,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "ea9b37a1f22af4634f32c01cd3efe3d0",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "4cc34f2a82671811da9a4bcd6c0debac",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1616900400000,
+        "endDate": 1616932800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "d23512bc0115229369d98beaed2e24b7",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "0d743aa1f3175c830849ecf90c0a3b1d",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "f23f2a1460000428ef55728d515179ec",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1616922000000,
+        "endDate": 1616932800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "6711fa2a827f24859d0e3dc8e2763de6",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "f8493c4e67f0c589e076f0bfc81c14c4",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "045a7d8a07b9ceb91866df8cba87ace4",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 13,
+        "acceptOrder": true,
+        "beginDate": 1616925600000,
+        "endDate": 1616954400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "e400a7228fc7100eeed25483cb18bfc2",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "8a617deada0bd3741c70a0ce739d95a7",
+            "reserveDate": 1616860800000,
+            "saleCount": 2,
+            "remainCount": 2,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "b5900ad01cf0364da9667dc7cafd5400",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 14,
+        "acceptOrder": true,
+        "beginDate": 1616932800000,
+        "endDate": 1616943600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "a4fd716926ebadad3312cb43c8c91d6f",
+            "reserveDate": 1616860800000,
+            "saleCount": 1,
+            "remainCount": 5,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "58c42ba569d9ae652a39d73dbbf10067",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "f95117115650c8a51a5a777c43fcb3bc",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1616943600000,
+        "endDate": 1616954400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "714df1be825d46ec6185bcb1aaf2fc76",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "1d28e77cfdab5c68917de73ff0d6d775",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "e9f7b7414141536b6b9eb59fc68c4673",
+            "reserveDate": 1616860800000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1616947200000,
+    "remainCount": 89,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1616986800000,
+        "endDate": 1617008400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "2f6ded521d225193adb69eec8b973f13",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "dc39cbacc57ceebfe3b95599e60a2c78",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "10cd9fc71093205861fe9119ed91e335",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1616986800000,
+        "endDate": 1617019200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "f643bc00f4c191e3e2501bcc55bb91b9",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "103c1e829eb43dfc76f03213b17f4d12",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "2e20af9519c60ef72222e73c3cc2da2d",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 14,
+        "acceptOrder": true,
+        "beginDate": 1617008400000,
+        "endDate": 1617019200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "7fb8ca024a8eb1f204bb0c61ebd4740a",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "c32553739c069f8f1b87ce4a8e9f7803",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "5314759adf396a99b2017612bddd0d6b",
+            "reserveDate": 1616947200000,
+            "saleCount": 1,
+            "remainCount": 4,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617012000000,
+        "endDate": 1617040800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "858157ba407fa258d2a0df2c6944c785",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "aec980319748f2472ca32cdfb4989f16",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "37c68e7dff3ca734198f4c7569c9b1cc",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617019200000,
+        "endDate": 1617030000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "d10828166695fd6639d6a070efd015bf",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "7c2d9a5af1f329dfa5990e7f0a968d5f",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "689ef7400853872b9695e7b66501e8ab",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617030000000,
+        "endDate": 1617040800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "95832982b0ab9083cb2120d87a6b05f6",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "fd2715983cc0ffbb143b592e40e89fd3",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "d3c9c4c43ae4421fcbead9ee294a5e70",
+            "reserveDate": 1616947200000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1617033600000,
+    "remainCount": 90,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617073200000,
+        "endDate": 1617094800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "55d81f5422178dab2aecfa478e2328c6",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "12a4fb13b340b748f5e8eb97ac45f7f6",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "060c21cb7972abf02190592dbdc9a810",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617073200000,
+        "endDate": 1617105600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "b405cc946859333435b06db62d34e16b",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "a9e3a7bd35e67d39f2546c0621f3f8db",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "a4c3354d1d65956ec77ad719dcb4c7b9",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617094800000,
+        "endDate": 1617105600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "d769bd6b315f47695ae50b590c6398a1",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "b8baea07272306360c28e5899d0d15e6",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "a50f615971826c3855da2b2a8bc09778",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617098400000,
+        "endDate": 1617127200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "d2d5eb73942914a9f3f9265b635f51c7",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "083520caf96dd1d11a9e41a28652156d",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "5f8d973eca2ca1d199fd45b1dd33f2ca",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617105600000,
+        "endDate": 1617116400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "4b200a9865408e2255114327d9451dec",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "a356969d6769df9a6fe5f5039946c96c",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "1bc05aeac4d56b5c78596acbaa899f27",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617116400000,
+        "endDate": 1617127200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "42e21f7d21854ec629470230652a8e1b",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "10331b6c84bd479d757a7b81a32e28af",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "c681d7b15c01ccc6dcd9bb1053efc222",
+            "reserveDate": 1617033600000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1617120000000,
+    "remainCount": 90,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617159600000,
+        "endDate": 1617181200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "81ebd8b762a68dd6f8265f8bcfd742c9",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "1ffd92412e82675168de8dd02f8f4c83",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "1c0392c4c22f047ecfdda5066df30100",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617159600000,
+        "endDate": 1617192000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "837d6ccf724ca7f3afd105cef2a7198d",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "b185269c0f104c4d59a9f727c487e380",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "2aef1002084211f783000a316a9d2399",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617181200000,
+        "endDate": 1617192000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "2271cf857e95435e27de14d683f99de6",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "ca1b9f1c8abd1df53658bdab3a580fa8",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "9d35d02d22844dbd0195df7202b721e4",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617184800000,
+        "endDate": 1617213600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "3099cf5a624b65c8b92f9770f807aa62",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "05692e7295cea110253451c8d627f4ab",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "5f59bcab1a02a952b29ed775cd344280",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617192000000,
+        "endDate": 1617202800000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "75c4b8694732ea505a39641137ba7d7f",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "63a00de752f3d01de2a2522f5dccd5b4",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "90fddb956638b90af9d50c70e2467d74",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617202800000,
+        "endDate": 1617213600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "fc86ff6fb932033aaa27626e4fbc7d8b",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "5946332b986ea9d1fed875f5675e3888",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "4cd7f6dac98ec445ddce43743dae964b",
+            "reserveDate": 1617120000000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "reserveDate": 1617206400000,
+    "remainCount": 90,
+    "acceptOrder": true,
+    "periodStockList": [
+      {
+        "periodDesc": "11:00-17:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617246000000,
+        "endDate": 1617267600000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "782c5336b1c0c609eb91f94248e78e23",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "9249c3a7da5e4fabcf0d9a44741de95f",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "1420d680f620c1348ff33881e740cde5",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "11:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617246000000,
+        "endDate": 1617278400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "441b543a5bc7a6e719cbcfcad31d3009",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "8a8a1439b0a99b2d8b9ac5ee68b4d435",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "bb21ebf7826fa949ff580d50631759ea",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "17:00-20:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617267600000,
+        "endDate": 1617278400000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "9eebcefaa24367eaa0dade3641b2036c",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "533be4acbaf4ad545a45c1f542ef8478",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "44bc415df795adeee94a87fc0ecc97a3",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "18:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617271200000,
+        "endDate": 1617300000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "ae7c2f151d86127dd0e96b42d8596da2",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "cf1dac6eadcff23832e255ca7cbb265f",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "88feb65e205ffd963a57ed1f1702017c",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "20:00-23:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617278400000,
+        "endDate": 1617289200000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "bbb8efad98ecc95d4a6c349fa084ff7f",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "b2139ae9f6448d7625b6476ce330713a",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "dd17edee6322509217e25801953783b8",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      },
+      {
+        "periodDesc": "23:00-次日02:00",
+        "remainCount": 15,
+        "acceptOrder": true,
+        "beginDate": 1617289200000,
+        "endDate": 1617300000000,
+        "roomStockList": [
+          {
+            "roomName": "小包",
+            "itemStockNo": "57b6b71c858d6b04d82ceb346acdb633",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 6,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "中包",
+            "itemStockNo": "9ff5ee1ee4465eb43c8301be3716fc62",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 4,
+            "acceptOrder": true
+          },
+          {
+            "roomName": "大包",
+            "itemStockNo": "5b00031775cd2e80a1bf013ef6cec09c",
+            "reserveDate": 1617206400000,
+            "saleCount": 0,
+            "remainCount": 5,
+            "acceptOrder": true
+          }
+        ]
+      }
+    ]
+  }
+]

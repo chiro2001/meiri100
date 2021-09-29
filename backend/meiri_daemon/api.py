@@ -1,5 +1,5 @@
 from utils.api_tools import *
-from gbk_daemon.daemon import daemon, DaemonBean
+from meiri_daemon.daemon import daemon, DaemonBean
 
 
 class DaemonAPI(Resource):

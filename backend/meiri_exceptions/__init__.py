@@ -1,7 +1,7 @@
 from utils.logger import logger
 
 
-class GBKBaseError(Exception):
+class MeiRiBaseError(Exception):
     def __init__(self, data: str = None):
         self.data = data
         logger.error(self.__str__())
@@ -10,25 +10,25 @@ class GBKBaseError(Exception):
         return f"Error: {self.__class__.__name__}{(' : %s' % self.data) if self.data is not None else ''}"
 
 
-class GBKUserExist(GBKBaseError):
+class MeiRiUserExist(MeiRiBaseError):
     pass
 
 
-class GBKPermissionError(GBKBaseError):
+class MeiRiPermissionError(MeiRiBaseError):
     pass
 
 
-class GBKLoginError(GBKBaseError):
+class MeiRiLoginError(MeiRiBaseError):
     pass
 
 
-class GBKShopIdError(GBKBaseError):
+class MeiRiShopIdError(MeiRiBaseError):
     pass
 
 
-class GBKError(GBKBaseError):
+class MeiRiError(MeiRiBaseError):
     pass
 
 
-class GBKCookiesError(GBKBaseError):
+class MeiRiCookiesError(MeiRiBaseError):
     pass

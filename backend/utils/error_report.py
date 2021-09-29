@@ -2,7 +2,7 @@ import sys
 import os
 import json
 from utils.logger import logger
-from gbk_database.config import Constants
+from meiri_database.config import Constants
 from utils.email_sender import send_email
 
 
@@ -42,7 +42,7 @@ def report_it(e):
     logger.info('发送bug报告邮件成功')
     try:
         logger.info('尝试把bug发送到远程数据库...')
-        from gbk_database.database import DataBase
+        from meiri_database.database import DataBase
         _db = DataBase()
         _db.error_report(error)
     except Exception as e2:

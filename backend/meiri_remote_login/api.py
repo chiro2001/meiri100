@@ -1,7 +1,7 @@
 from data_apis.api import API
 from meiri_scheduler.task_pool import task_sys_pool
 from utils.api_tools import *
-from gbk_daemon.daemon import daemon, DaemonBean
+from meiri_daemon.daemon import daemon, DaemonBean
 from meiri_exceptions import *
 from utils.formats import cookies_check
 
@@ -35,7 +35,11 @@ def post_cookies(uid: int, cookies: str, use_this_cookies: bool = True):
 
 
 class RemoteLoginAPI(Resource):
-    args_set_cookies = reqparse.RequestParser().add_argument("cookies", type=str, required=True, location=["json", ])
+    args_set_cookies_user = reqparse.RequestParser() \
+        .add_argument("cookies", type=str, required=False, location=["json", ]) \
+        .add_argument("username", type=str, required=False, location=["json", ]) \
+        .add_argument("password", type=str, required=False, location=["json", ])
+
     # args_delete_cookies = reqparse.RequestParser() \
     #     .add_argument("cookies", type=str, required=False, location=["json", ]) \
     #     .add_argument("shop_id", type=int, required=False, location=["json", ])
@@ -54,7 +58,15 @@ class RemoteLoginAPI(Resource):
         """
         获取远程服务器信息
         """
-        return make_result(code=404)
+        url = ''
+        return make_result(data={
+            'server': url,
+            'servers': [
+                {
+                    'url': url
+                }
+            ]
+        })
 
     # Bug: DELETE 请求并不能含有 body，所以不能在 body 解析 json 。
     # @args_required_method(args_delete_cookies)
@@ -86,11 +98,22 @@ class RemoteLoginAPI(Resource):
             d.save()
         return make_result()
 
-    @args_required_method(args_set_cookies)
+    @args_required_method(args_set_cookies_user)
     @auth_required_method
     def post(self, uid: int):
         """
         设置 Cookies
         """
-        cookies = self.args_set_cookies.parse_args().get('cookies')
-        return post_cookies(uid, cookies)
+        username, password = self.args_set_cookies_user.parse_args().get(
+            'username'), self.args_set_cookies_user.parse_args().get('password')
+        cookies = self.args_set_cookies_user.parse_args().get('cookies')
+        if cookies is not None:
+            return post_cookies(uid, cookies)
+        elif username is not None and password is not None:
+            # 尝试登录
+            resp = API(username=username, password=password).meiri.login(username=username, password=password)
+            return make_result(data={
+                'remote_login_result': resp
+            })
+        else:
+            return make_result(404)

@@ -1,7 +1,7 @@
 import pymongo
 import datetime
-from gbk_database.config import Constants
-from gbk_exceptions import *
+from meiri_database.config import Constants
+from meiri_exceptions import *
 from utils.logger import logger
 
 
@@ -161,13 +161,13 @@ class DataKeyDB(BaseDB):
 
     def save(self, uid: int, data, data_type: str = 'base', key: str = None):
         if key is None:
-            raise GBKError("Cannot save without key")
+            raise MeiRiError("Cannot save without key")
         auto_time_update(self.col, {'uid': uid, 'data_type': data_type, 'key': key}, {'data': data},
                          insert_if_necessary=True)
 
     def load(self, uid: int, data_type: str = 'base', key: str = None):
         if uid is None and key is None:
-            raise GBKError("Operation error")
+            raise MeiRiError("Operation error")
         if uid is None:
             return find_many(self.col, {'data_type': data_type, 'key': key})
         return find_one(self.col, {'uid': uid, 'data_type': data_type, 'key': key})

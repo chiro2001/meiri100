@@ -12,10 +12,10 @@ class BaseTrigger:
         self.trigger_type = state.get('trigger_type')
 
 
-class StockTrigger(BaseTrigger):
-    def __init__(self):
-        super().__init__(trigger_type='stock')
-        self.start_date: datetime = datetime.now()
-        self.end_date: datetime = None
-        self.value: int = 5
-        self.operator: str = '>'
+# class StockTrigger(BaseTrigger):
+#     def __init__(self):
+#         super().__init__(trigger_type='stock')
+#         self.start_date: datetime = datetime.now()
+#         self.end_date: datetime = None
+#         self.value: int = 5
+#         self.operator: str = '>'

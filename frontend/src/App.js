@@ -44,13 +44,13 @@ import { api } from "./api/api";
 
 import ListItemLink from "./components/ListItemLink";
 import Launch from "./pages/Launch";
-import Settings from "./pages/Settings";
+// import Settings from "./pages/Settings";
 import './App.css';
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, ListItem, Snackbar } from '@material-ui/core';
 import RemoteLogin from './pages/RemoteLogin';
 import Login from './pages/Login';
-import Tasks from "./pages/Tasks";
-import Predicts from './pages/Predicts';
+// import Tasks from "./pages/Tasks";
+// import Predicts from './pages/Predicts';
 import User from './pages/User';
 import ErrorBoundary from './ErrorBondary';
 
@@ -165,11 +165,12 @@ store.subscribe(async () => {
 });
 
 const getShopTitle = function () {
-  if (!(store.getState().daemon && store.getState().daemon.shop_info && store.getState().daemon.shop_info.shopName)) return null;
-  // console.log('getShopTitle', store.getState().daemon.shop_info);
-  const title = `${store.getState().daemon.shop_info.shopName} - ${store.getState().daemon.shop_info.branchName}`;
-  // console.log(title);
-  return title;
+  // if (!(store.getState().daemon && store.getState().daemon.shop_info && store.getState().daemon.shop_info.shopName)) return null;
+  // // console.log('getShopTitle', store.getState().daemon.shop_info);
+  // const title = `${store.getState().daemon.shop_info.shopName} - ${store.getState().daemon.shop_info.branchName}`;
+  // // console.log(title);
+  // return title;
+  return '众星计划任务管理程序';
 }
 
 export default function App() {
@@ -179,7 +180,7 @@ export default function App() {
   const [errorDialogInfo, setErrorDialogInfo] = React.useState(false);
   const [myMessage, setMyMessage] = React.useState(null);
   const [hasLogin, setHasLogin] = React.useState(false);
-  const titleDefault = "团购杀手 - KTV体验版";
+  const titleDefault = 'Title';
   const [title, setTitle] = React.useState(getShopTitle() || titleDefault);
   const [ignored, forceUpdate] = React.useReducer(x => x + 1, 0);
   const [requestingRemote, setRequesingRemote] = React.useState(false);
@@ -317,9 +318,6 @@ export default function App() {
         <Divider />
         <List onClick={handleClickAction}>
           <ListItemLink to="/" primary="启动页" icon={<DashboardIcon />} />
-          <ListItemLink to="/tasks" primary="任务" icon={<AssignmentIcon />} />
-          <ListItemLink to="/predicts" primary="智能预测" icon={<EqualizerIcon />} />
-          <ListItemLink to="/settings" primary="设置" icon={<SettingsIcon />} />
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -327,15 +325,6 @@ export default function App() {
         <Switch>
           <Route path={"/"} exact={true}>
             <Launch />
-          </Route>
-          <Route path={"/tasks"} exact={true}>
-            <Tasks />
-          </Route>
-          <Route path={"/predicts"} exact={true}>
-            <Predicts />
-          </Route>
-          <Route path={"/settings"} exact={false}>
-            <Settings />
           </Route>
         </Switch>
       </main>
@@ -357,9 +346,10 @@ export default function App() {
         }
       });
     }
-  } else if ((!isNowLogining && user) && store.getState().daemon && !store.getState().daemon.uid) {
-    content = <RemoteLogin></RemoteLogin>
   }
+  //  else if ((!isNowLogining && user) && store.getState().daemon && !store.getState().daemon.uid) {
+  //   content = <RemoteLogin></RemoteLogin>
+  // }
   // console.log('app.js user', user, 'content', content);
 
   return (

@@ -4,21 +4,21 @@ from flask import Flask, Response
 from flask_cors import CORS
 from flask_restful import Resource, Api
 
-from gbk_error_report.api import ErrorReport
+from meiri_error_report.api import ErrorReport
 from utils.error_report import form_report
 from utils.logger import logger
 from utils.docs import get_class_docs
 from utils.make_result import make_result
-from gbk_database.database import db
+from meiri_database.database import db
 
-from gbk_user.api import *
-from gbk_session.api import *
-from gbk_scheduler.task_api import *
-from gbk_sync.api import *
-from gbk_scheduler.action_api import *
-from gbk_scheduler.trigger_api import *
-from gbk_remote_login.api import *
-from gbk_daemon.api import *
+from meiri_user.api import *
+from meiri_session.api import *
+from meiri_scheduler.task_api import *
+from meiri_sync.api import *
+from meiri_scheduler.action_api import *
+from meiri_scheduler.trigger_api import *
+from meiri_remote_login.api import *
+from meiri_daemon.api import *
 
 
 class MainAPI(Resource):

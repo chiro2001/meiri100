@@ -2,7 +2,7 @@ import os
 from flask import *
 from utils.logger import logger
 from utils.file_static import is_file_path_legal, get_static_file_path
-from gbk_database.config import config
+from meiri_database.config import config
 
 app = Flask(__name__, static_folder=config.data['file_server']['static_path'])
 

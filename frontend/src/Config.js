@@ -1,5 +1,5 @@
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { orange, grey, blueGrey } from '@material-ui/core/colors';
+import { orange, grey, blueGrey, teal, green } from '@material-ui/core/colors';
 import { api } from "./api/api";
 
 const ITEM_NAME = "group_bying_config";
@@ -9,7 +9,16 @@ class Config {
     this.load = this.load.bind(this);
     this.save = this.save.bind(this);
     this.theme_avaliable = {
-      "默认主题": createMuiTheme({}),
+      "默认主题": createMuiTheme({
+        palette: {
+          primary: {
+            main: teal[500]
+          }, 
+          secondary: {
+            main: green[500]
+          }
+        }
+      }),
       '黑暗模式': createMuiTheme({
         palette: {
           type: "dark",

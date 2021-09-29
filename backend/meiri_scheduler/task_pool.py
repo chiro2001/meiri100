@@ -1,6 +1,6 @@
-from gbk_scheduler.task import *
-from gbk_system.action import ActionCycle
-from gbk_system.task import sys_tasks
+from meiri_scheduler.task import *
+from meiri_system.action import ActionCycle
+from meiri_system.task import sys_tasks
 
 
 class TaskPool:

@@ -1,5 +1,5 @@
 from utils.api_tools import *
-from gbk_scheduler.task import *
+from meiri_scheduler.task import *
 
 
 def action_get_info(action_type: str):

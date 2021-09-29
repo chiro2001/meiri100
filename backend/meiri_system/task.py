@@ -1,7 +1,7 @@
 from apscheduler.triggers.interval import IntervalTrigger
 
 from meiri_scheduler.task import Task, Constants
-from gbk_system.action import ActionBackupData
+from meiri_system.action import ActionBackupData
 
 sys_tasks_delays = Constants.RUN_TASKS_DELAYS
 

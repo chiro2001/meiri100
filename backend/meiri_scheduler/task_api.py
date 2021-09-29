@@ -1,5 +1,5 @@
 from utils.api_tools import *
-from gbk_scheduler.task import *
+from meiri_scheduler.task import *
 
 args_task = reqparse.RequestParser().add_argument("task", type=dict, required=True, location=["json", ])
 

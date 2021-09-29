@@ -1,31 +1,28 @@
-from gbk_scheduler.action import *
+from meiri_scheduler.action import *
 import apscheduler.jobstores.base
 from apscheduler.schedulers.background import BackgroundScheduler
 # from apscheduler.triggers import interval, cron, date
 from apscheduler.triggers.interval import IntervalTrigger
 from apscheduler.triggers.date import DateTrigger
 from apscheduler.triggers.cron import CronTrigger
-from gbk_database.config import Constants
-from gbk_database.database import db
-from gbk_scheduler.trigger import StockTrigger
+from meiri_database.config import Constants
+from meiri_database.database import db
 from utils.formats import task_data_encode, task_data_decode
 from utils.make_result import limit_list
 from utils.logger import logger
-from gbk_exceptions import *
+from meiri_exceptions import *
 
 scheduler = BackgroundScheduler(**Constants.SCHEDULE_CONFIG)
 
 trigger_types = {
     'interval': IntervalTrigger,
     'date': DateTrigger,
-    'cron': CronTrigger,
-    'stock': StockTrigger
+    'cron': CronTrigger
 }
 
 trigger_names_available = {
     'interval': "间隔触发器",
-    'date': "单次触发器",
-    'stock': "库存触发器"
+    'date': "单次触发器"
 }
 
 trigger_names_time = ['interval', 'date', 'cron']
@@ -34,14 +31,12 @@ trigger_names = {
     'interval': "间隔触发器",
     'date': "单次触发器",
     "cron": 'Cron触发器',
-    'stock': "库存触发器"
 }
 
 trigger_desc = {
     'interval': "能够依照固定时间间隔执行动作。",
     'date': "能在指定时间点执行动作。",
-    "cron": '使用Cron表达式实现复杂的执行规则。',
-    'stock': "根据实时的库存变化情况来执行动作"
+    "cron": '使用Cron表达式实现复杂的执行规则。'
 }
 
 
@@ -80,46 +75,32 @@ trigger_args = {
         # 这个咋弄啊
         'fields': {'value': [], 'editable': False},
         'jitter': {'value': None, 'editable': False}
-    },
-    "stock": {
-        'trigger_type': {'value': 'stock', 'editable': False},
-        'start_date': {'value': trigger_get_info('stock').get('start_date'), 'type': 'datetime', 'editable': True},
-        'end_date': {'value': trigger_get_info('stock').get('end_date'), 'type': 'datetime', 'editable': True},
-        'value': {'value': trigger_get_info('stock').get('value'), 'editable': True},
-        'operator': {'value': '>', 'type': 'select',
-                     'options': {
-                         '>': '大于', '<': '小于',
-                         '>=': '大于等于', '<=': '小于等于',
-                         # 如果可以选择大于等于/小于等于的话，会有恢复task重复情况
-                         '==': '等于', '!=': '不等于'
-                     },
-                     'editable': True}
     }
 }
 
 action_args = {
-    'adjust_price': {
-        'action_type': {'value': 'adjust_price', 'editable': False},
-        'args': {'value': [], 'editable': False},
-        'kwargs': {'value': {}, 'editable': False},
-        'uid': {'value': None, 'editable': False},
-        'item_id': {'value': 0, 'editable': True},
-        'target_price': {'value': 0, 'editable': True},
-        'periodDesc': {'value': None, 'editable': False},
-        'roomName': {'value': None, 'editable': False}
-    },
-    'adjust_price_relative': {
-        'action_type': {'value': 'adjust_price_relative', 'editable': False},
-        'args': {'value': [], 'editable': False},
-        'kwargs': {'value': {}, 'editable': False},
-        'uid': {'value': None, 'editable': False},
-        'item_id': {'value': 0, 'editable': True},
-        'day': {'value': None, 'editable': False},
-        'date': {'value': None, 'editable': False},
-        'price_relative': {'value': 0, 'editable': True},
-        'periodDesc': {'value': None, 'editable': False},
-        'roomName': {'value': None, 'editable': False}
-    },
+    # 'adjust_price': {
+    #     'action_type': {'value': 'adjust_price', 'editable': False},
+    #     'args': {'value': [], 'editable': False},
+    #     'kwargs': {'value': {}, 'editable': False},
+    #     'uid': {'value': None, 'editable': False},
+    #     'item_id': {'value': 0, 'editable': True},
+    #     'target_price': {'value': 0, 'editable': True},
+    #     'periodDesc': {'value': None, 'editable': False},
+    #     'roomName': {'value': None, 'editable': False}
+    # },
+    # 'adjust_price_relative': {
+    #     'action_type': {'value': 'adjust_price_relative', 'editable': False},
+    #     'args': {'value': [], 'editable': False},
+    #     'kwargs': {'value': {}, 'editable': False},
+    #     'uid': {'value': None, 'editable': False},
+    #     'item_id': {'value': 0, 'editable': True},
+    #     'day': {'value': None, 'editable': False},
+    #     'date': {'value': None, 'editable': False},
+    #     'price_relative': {'value': 0, 'editable': True},
+    #     'periodDesc': {'value': None, 'editable': False},
+    #     'roomName': {'value': None, 'editable': False}
+    # },
     'base': {
         'action_type': {'value': 'base', 'editable': False},
         'args': {'value': [], 'editable': False},
@@ -147,8 +128,7 @@ def get_trigger_name_from_dict(trigger: dict):
 def get_trigger_name_from_instance(trigger):
     return 'interval' if isinstance(trigger, IntervalTrigger) \
         else 'date' if isinstance(trigger, DateTrigger) \
-        else 'cron' if isinstance(trigger, CronTrigger) \
-        else 'stock'
+        else 'cron'
 
 
 class Task:
@@ -300,7 +280,7 @@ class TaskManager:
         task_old = self.find_task_by_tid(task.tid)
         if task_old is not None:
             if not self.remove_task(task_old.tid):
-                raise GBKError("Cannot remove task!")
+                raise MeiRiError("Cannot remove task!")
         if self.enabled:
             task.enable()
         self.tasks.append(task)

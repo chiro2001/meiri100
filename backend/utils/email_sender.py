@@ -2,7 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
-from gbk_database.config import Constants
+from meiri_database.config import Constants
 
 
 def send_email(sender: str, password: str, text: str, title_from: str, title_to: str, subject: str):

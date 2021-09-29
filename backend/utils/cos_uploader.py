@@ -7,7 +7,7 @@ from qcloud_cos import CosS3Client
 from qcloud_cos import CosClientError
 
 import secrets
-from gbk_database.config import Constants, Statics
+from meiri_database.config import Constants, Statics
 from utils.logger import logger
 
 cos_config: CosConfig = None

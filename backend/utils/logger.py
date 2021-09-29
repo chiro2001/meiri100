@@ -6,7 +6,7 @@ from colorlog import ColoredFormatter
 from logging import handlers
 
 # Config Logging
-LOGGER_FILENAME = './logs/gbk.log'
+LOGGER_FILENAME = './logs/meiri.log'
 LOGGER_WHEN = 'midnight'
 
 

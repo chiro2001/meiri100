@@ -2,13 +2,13 @@ import os
 import threading
 import time
 # from utils.logger import logger
-from gbk_database.tools import *
-from gbk_system.database import SystemDB, SpiderDB
-from gbk_user.database import UserDB
-from gbk_session.database import SessionDB
-from gbk_scheduler.task_database import TaskManagerDB
-from gbk_sync.database import SyncDB
-from gbk_daemon.database import DaemonDB
+from meiri_database.tools import *
+from meiri_system.database import SystemDB, SpiderDB
+from meiri_user.database import UserDB
+from meiri_session.database import SessionDB
+from meiri_scheduler.task_database import TaskManagerDB
+from meiri_sync.database import SyncDB
+from meiri_daemon.database import DaemonDB
 from utils.error_report import send_report
 
 

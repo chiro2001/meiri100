@@ -21,6 +21,18 @@ class Constants:
     # Environment
     ENVIRONMENT = os.environ.get("ENV") if os.environ.get("ENV") is not None else (
         "release" if platform.system() == 'Linux' else "dev")
+    # Find，默认查找分页块大小
+    FIND_LIMIT = 30
+    # JWT config
+    JWT_SECRET_KEY = secrets.SECRET_WORDS
+    JWT_HEADER_TYPE = ""
+    JWT_HEADER_NAME = "Authorization"
+    JWT_LOCATIONS = ['headers', ]
+    JWT_MESSAGE_401 = f"Authorization required in {', '.join([location for location in JWT_LOCATIONS])}"
+    # JWT access_token 认证时间，现在设置为release 5分钟，dev 5000分钟
+    JWT_ACCESS_TIME = (60 * 5) if ENVIRONMENT == 'release' else (60 * 50 * 100)
+    # JWT refresh_token 有效时间，即登录有效时间，暂且设置为100个月
+    JWT_REFRESH_TIME = 60 * 60 * 24 * 30 * 100
     # Database
     DATABASE_URI = secrets.SECRET_MONGO_URI
     DATABASE_NAME = DATABASE_URI.split('/')[-1]
@@ -33,6 +45,22 @@ class Constants:
     EMAIL_SMTP_PORT = 465
     # release 环境才发消息
     EMAIL_SENDING = ENVIRONMENT == 'release'
+    # Users
+    # 调试用的一个用户，自动加入
+    USERS_OWNER_PASSWORD = secrets.SECRET_OWNER_PASSWORD
+    USERS_OWNER_USERNAME = 'chiro'
+    USERS_OWNER_NICK = 'Chiro'
+    USERS_OWNER_GITHUB = 'chiro2001'
+    USERS_OWNER = {
+        'username': USERS_OWNER_USERNAME,
+        'nick': USERS_OWNER_NICK,
+        'state': 'normal',
+        'profile': {
+            'contact': {
+                'github': USERS_OWNER_GITHUB
+            }
+        }
+    }
     # API config
     # 总的API Path
     API_PATH = '/api/v1'
@@ -52,12 +80,22 @@ class Constants:
     # 调试模式下输出系统的TASK信息
     RUN_WITH_SYS_TASK_LOG = ENVIRONMENT != 'release'
     # 调试模式下忽略这些系统task（是爬虫
-    RUN_DISMISS_TASK = [] if ENVIRONMENT == 'release' else []
+    RUN_DISMISS_TASK = [] if ENVIRONMENT == 'release' else [
+        'sys_trade_data', 'sys_flow_data', 'sys_backup'
+    ]
     # 系统task运行间隔
     RUN_TASKS_DELAYS = {
-
+        # 'sys_trade_data': 5.3,
+        # 'sys_flow_data': 15.2,
+        # 六小时备份
+        'sys_backup': 60 * 60 * 6,
+        # 更新库存信息
+        # 'user_room_stock': 10.2,
+        # 根据库存信息建立任务
+        # 'user_stock_check': 3
     } if ENVIRONMENT == 'release' else {
-
+        # 'user_room_stock': 6,
+        # 'user_stock_check': 3
     }
     # Schedule
     # 配置使用内存做 Job 储存，因为已经在数据库自己实现一套储存结构了
@@ -94,7 +132,13 @@ class Constants:
 
 # 运行中静态数据
 class Statics:
-    pass
+    tjw_access_token = TJWSS(Constants.JWT_SECRET_KEY, Constants.JWT_ACCESS_TIME)
+    tjw_refresh_token = TJWSS(Constants.JWT_SECRET_KEY, Constants.JWT_REFRESH_TIME)
+    cos_readonly: bool = True  # 未用
+    cos_secret_id: str = None
+    cos_secret_key: str = None
+    cos_region = 'ap-guangzhou'
+    cos_bucket = 'backup-1254016670'
 
 
 # 可以及时调整的存在数据库的参数

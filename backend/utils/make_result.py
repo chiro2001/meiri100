@@ -1,5 +1,5 @@
 from flask import jsonify
-from gbk_database.config import Constants
+from meiri_database.config import Constants
 import json
 from utils.formats import json_dumps_format
 

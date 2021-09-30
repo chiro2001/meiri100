@@ -7,7 +7,7 @@ import { ActionTag, isActionModified } from "../components/Actions";
 import TaskDialog, { setTaskDialogUpdate } from "../components/TaskDialog";
 import Triggers, { wrapTrigger } from "../components/Triggers";
 import { TriggerTag, isTriggerModified } from "../components/Triggers";
-import { setErrorInfo, setTasks, updateTypes } from "../data/action";
+import { setErrorInfo, setAccounts, updateTypes } from "../data/action";
 import store from "../data/store";
 import { arrayRemove, deepCopy, isObjectValueEqual, objectUpdate } from "../utils/utils";
 
@@ -159,7 +159,7 @@ export default function Tasks(props) {
         store.dispatch(setErrorInfo(resp));
         return;
       }
-      store.dispatch(setTasks(resp.data.tasks));
+      store.dispatch(setAccounts(resp.data.tasks));
       forceUpdate();
     });
   }

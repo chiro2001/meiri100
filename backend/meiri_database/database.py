@@ -3,21 +3,23 @@ import threading
 import time
 # from utils.logger import logger
 from meiri_database.tools import *
+from meiri_log.database import MeiriLogDB
+from meiri_state.database import MeiriStateDB
 from meiri_system.database import SystemDB, SpiderDB
 from meiri_user.database import UserDB
 from meiri_session.database import SessionDB
 from meiri_scheduler.task_database import TaskManagerDB
 from meiri_sync.database import SyncDB
-from meiri_daemon.database import DaemonDB
+# from meiri_daemon.database import DaemonDB
+from meiri_account.database import AccountDB
 from utils.error_report import send_report
 
 
 class DataBase:
     # 用到的所有数据集合
     COLLECTIONS = [
-        'user', 'user_uid', 'gbk_bug', 'session', 'session_disabled_token',
-        'task_manager', 'task_tid', 'daemon', 'cookies', 'sync', 'system',
-        'service', 'spider'
+        'user', 'user_uid', 'meiri_bug', 'session', 'session_disabled_token',
+        'task_manager', 'task_tid', 'sync', 'system', 'service', 'account', 'log'
     ]
 
     def __init__(self, dismiss_rebase=False):
@@ -30,7 +32,11 @@ class DataBase:
         self.system: SystemDB = None
         self.spider: SpiderDB = None
         self.sync: SyncDB = None
-        self.daemon: DaemonDB = None
+        # self.daemon = None
+        self.account: AccountDB = None
+        self.log: MeiriLogDB = None
+        self.state: MeiriStateDB = None
+
         self.init_parts()
         self.first_start = not dismiss_rebase
         if Constants.RUN_REBASE and not dismiss_rebase:
@@ -43,7 +49,10 @@ class DataBase:
         self.system = SystemDB(self.db)
         self.spider = SpiderDB(self.db)
         self.sync = SyncDB(self.db)
-        self.daemon = DaemonDB(self.db)
+        # self.daemon = DaemonDB(self.db)
+        self.account = AccountDB(self.db)
+        self.log = MeiriLogDB(self.db)
+        self.state = MeiriStateDB(self.db)
 
     def rebase(self):
         for col in DataBase.COLLECTIONS:
@@ -62,15 +71,15 @@ class DataBase:
 
     def error_report(self, error, error_type: str = 'backend'):
         try:
-            self.db.gbk_bug.insert_one({'time': time.asctime(), 'error': error, 'error_type': error_type})
+            self.db.meiri_bug.insert_one({'time': time.asctime(), 'error': error, 'error_type': error_type})
         except Exception as e:
             logger.error(f'wanna to report err then {e}')
-            self.db.gbk_bug.insert_one({'time': time.asctime(), 'error': str(error), 'error_type': error_type})
+            self.db.meiri_bug.insert_one({'time': time.asctime(), 'error': str(error), 'error_type': error_type})
         if Constants.EMAIL_SENDING:
             send_report(error)
 
     def start_error_report(self, error, error_type: str = 'backend'):
-        th = threading.Thread(target=self.error_report, args=(error, ), kwargs={'error_type': error_type})
+        th = threading.Thread(target=self.error_report, args=(error,), kwargs={'error_type': error_type})
         th.setDaemon(True)
         th.start()
 

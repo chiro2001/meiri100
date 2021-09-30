@@ -3,7 +3,7 @@ import Config from "../Config"
 
 const defaultState = {
   config: new Config(),
-  tasks: [],
+  account: [],
   user: null,
   daemon: null,
   errorInfo: null,
@@ -38,9 +38,9 @@ function user(state = defaultState.user, action) {
   }
 }
 
-function tasks(state = defaultState.tasks, action) {
+function account(state = defaultState.account, action) {
   switch (action.type) {
-    case "SET_TASKS":
+    case "SET_ACCOUNTS":
       return action.data;
     default:
       return state;
@@ -74,4 +74,4 @@ function message(state = defaultState.message, action) {
   }
 }
 
-export default combineReducers({ config, errorInfo, message, daemon, user, tasks, types });
+export default combineReducers({ config, errorInfo, message, daemon, user, account, types });

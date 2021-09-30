@@ -1,3 +1,5 @@
+import time
+
 import pymongo
 import datetime
 from meiri_database.config import Constants
@@ -39,7 +41,7 @@ def insert_id_if_not_exist(col: pymongo.collection.Collection, key_name: str, va
 
 def auto_time_insert(col: pymongo.collection.Collection,
                      insert_dict: dict):
-    dt0 = datetime.datetime.utcnow()
+    dt0 = datetime.datetime.now()
     insert_dict['created_at'] = dt0
     return col.insert_one(insert_dict)
 
@@ -53,7 +55,8 @@ def auto_time_update(col: pymongo.collection.Collection,
             all_data = {k: filter_dict[k] for k in filter_dict if '.' not in k}
             all_data.update(update_dict)
             return auto_time_insert(col, all_data)
-    dt0 = datetime.datetime.utcnow()
+    # dt0 = datetime.datetime.utcnow()
+    dt0 = datetime.datetime.now()
     update_dict['updated_at'] = dt0
     update_dict = {'$set': update_dict, '$setOnInsert': {'created_at': dt0}}
     return col.update_one(filter_dict, update_dict, upsert=True)

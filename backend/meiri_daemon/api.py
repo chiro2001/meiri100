@@ -2,7 +2,7 @@ from utils.api_tools import *
 from meiri_daemon.daemon import daemon, DaemonBean
 
 
-class DaemonAPI(Resource):
+class DaemonAAPI(Resource):
     args_daemon_update = reqparse.RequestParser() \
         .add_argument("daemon_args", type=dict, required=True, location=["json", ])
 

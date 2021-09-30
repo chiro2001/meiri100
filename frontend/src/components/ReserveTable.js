@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { api } from '../api/api';
 import store from '../data/store';
-import { setDaemon, setErrorInfo, setTasks } from '../data/action';
+import { setDaemon, setErrorInfo, setAccounts } from '../data/action';
 import TaskDialog, { setTaskDialogUpdate } from "./TaskDialog";
 import { deepCopy, weekDayList } from '../utils/utils';
 import { getTargetTasks, TaskList } from '../pages/Tasks';
@@ -73,7 +73,7 @@ function ReserveTable(props) {
     setRequestingTasks(true);
     api.request("task", "GET").then(resp => {
       if (resp.code !== 200) return;
-      store.dispatch(setTasks(resp.data.tasks));
+      store.dispatch(setAccounts(resp.data.tasks));
       forceUpdate();
     });
   }
@@ -265,7 +265,7 @@ function ReserveTable(props) {
     updateData();
     api.request("task", "GET").then(resp => {
       if (resp.code !== 200) return;
-      store.dispatch(setTasks(resp.data.tasks));
+      store.dispatch(setAccounts(resp.data.tasks));
       setDialogTasksListOpen(null);
       forceUpdate();
     });
@@ -328,7 +328,7 @@ function ReserveTable(props) {
             onUpdate={() => {
               api.request("task", "GET").then(resp => {
                 if (resp.code !== 200) return;
-                store.dispatch(setTasks(resp.data.tasks));
+                store.dispatch(setAccounts(resp.data.tasks));
                 forceUpdate();
               });
             }}></TaskList> : null

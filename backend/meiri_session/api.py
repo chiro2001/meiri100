@@ -56,7 +56,7 @@ class Session(Resource):
         })
 
     @auth_required_method
-    def delete(self, access_token: str):
+    def delete(self, uid: int, access_token: str):
         """
         注销
         :return:
@@ -71,6 +71,18 @@ class Session(Resource):
         except BadTimeSignature:
             return make_result(424)
         db.session.disable_token(access_token=access_token, refresh_token=refresh_token)
+        # 删除对应任务
+        task_manager: TaskManager = task_pool.get_manager(uid=uid)
+        tasks = task_manager.find_task_by_trigger_class(IntervalTrigger)
+        task_to_remove: Task = None
+        for task in tasks:
+            if 'meiri_get_task' in task.task_name:
+                task_to_remove = task
+                break
+        if task_to_remove is not None:
+            task_pool.remove_task(uid=uid, tid=task_to_remove.tid)
+        else:
+            logger.error(f"Cannot find meiri_get_task task in uid {uid}!")
         return make_result()
 
 

@@ -2,7 +2,7 @@ import { Box, TextField, Button, Container, Paper, Typography } from '@material-
 import React from 'react';
 import { api } from '../api/api';
 import Config from "../Config";
-import { WebSocketAPI } from '../api/remote_login';
+// import { WebSocketAPI } from '../api/remote_login';
 import { setConfig, setDaemon } from '../data/action';
 import store from '../data/store';
 const QRCode = require('qrcode.react');
@@ -30,6 +30,8 @@ export default class RemoteLogin extends React.Component {
     };
     this.refUsername = React.createRef();
     this.refPassword = React.createRef();
+
+    console.log('onFinish', this.onFinish);
 
     this.state = this.stateDefault;
     this.handleAction = this.handleAction.bind(this);
@@ -96,19 +98,33 @@ export default class RemoteLogin extends React.Component {
       return;
     }
     console.log('done remote_login', resp);
-    const resp2 = await api.request('remote_login', "POST", {cookies: resp.data.remote_login_result.cookies});
+
+    this.setState({ loginDone: true });
+
+    // 添加到被管理账户列表
+    const resp2 = await api.request('account', "POST", {
+      username: this.state.username,
+      password: this.state.password
+    });
     if (resp2.code !== 200) {
       this.setState({ loginDone: true, loginError: resp.message });
       return;
     }
-    console.log('done remote_login post cookies', resp2);
-    // if (!this.forceLogin && ((store.getState().daemon && store.getState().daemon.cookies) || this.state.loginDone)) { this.ws_running = false; return; }
-    this.setState({ loginDone: true });
-    const daemon = await api.request('remote_login', 'GET');
-    if (daemon.code === 200 && daemon.data.uid) {
-      store.dispatch(setDaemon(daemon.data));
-    }
-    this.onFinish && this.onFinish();
+    console.log('done add account', resp2);
+
+    // const resp2 = await api.request('remote_login', "POST", {cookies: resp.data.remote_login_result.cookies});
+    // if (resp2.code !== 200) {
+    //   this.setState({ loginDone: true, loginError: resp.message });
+    //   return;
+    // }
+    // console.log('done remote_login post cookies', resp2);
+    // // if (!this.forceLogin && ((store.getState().daemon && store.getState().daemon.cookies) || this.state.loginDone)) { this.ws_running = false; return; }
+    // this.setState({ loginDone: true });
+    // const daemon = await api.request('remote_login', 'GET');
+    // if (daemon.code === 200 && daemon.data.uid) {
+    //   store.dispatch(setDaemon(daemon.data));
+    // }
+    // this.onFinish && this.onFinish();
   }
   // if(!this.forceLogin && ((store.getState().daemon && store.getState().daemon.cookies) || this.state.loginDone)) { this.ws_running = false; return; }
   render() {
@@ -116,7 +132,15 @@ export default class RemoteLogin extends React.Component {
     if (this.state.loginDone) {
       if (!this.state.loginError)
         content = <Paper style={{ width: 200, height: 200 }}>
-          <CenterBox>登录完成</CenterBox>
+          <CenterBox>
+            <Typography variant="body1">登录完成</Typography>
+            <Button variant="contained" color="primary" onClick={() => {
+              this.setState(this.stateDefault);
+            }}>继续添加</Button>
+            <Button variant="outlined" color="secondary" onClick={() => {
+              this.onFinish && this.onFinish();
+            }}>退出</Button>
+          </CenterBox>
         </Paper>;
       else content = <Paper style={{ width: 200, height: 200 }}>
         <CenterBox>
@@ -128,6 +152,7 @@ export default class RemoteLogin extends React.Component {
             // this.ws_api = null;
             // this.ws_running = false;
             // setTimeout(this.run_ws, 1000);
+            this.setState(this.stateDefault);
           }}>重试</Button>
         </CenterBox>
       </Paper>;
@@ -153,19 +178,19 @@ export default class RemoteLogin extends React.Component {
         }} /> <br /><br />
         <Button fullWidth onClick={() => { this.handleAction(); }} variant="contained" color="primary">验证</Button></div>;
     }
-    return (<Container maxWidth="xs" style={{ height: window.innerHeight * 0.6 }}>
+    return (<Container maxWidth="xs">
       <CenterBox>
-        <Typography variant="h5">添加被控制账号</Typography>
+        <Typography variant="h5">添加被管理账号</Typography>
         <br></br>
         {content}
         <br></br>
-        <Typography variant="body2" color="textSecondary">输入需要控制的账号和密码</Typography>
+        <Typography variant="body2" color="textSecondary">输入需要管理的账号和密码</Typography>
         <Typography variant="body2" color="textSecondary">本程序将会帮助你抢到重要任务</Typography>
         <br></br>
-        <Button fullWidth onClick={() => {
+        {/* <Button fullWidth onClick={() => {
           Config.clear();
           setTimeout(() => { window.location.reload(); }, 500);
-        }}>退出当前本网站账号</Button>
+        }}>退出当前本网站账号</Button> */}
       </CenterBox>
     </Container>);
   }

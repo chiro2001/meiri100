@@ -4,7 +4,10 @@ from flask import Flask, Response
 from flask_cors import CORS
 from flask_restful import Resource, Api
 
+from meiri_account.api import Account
 from meiri_error_report.api import ErrorReport
+from meiri_log.api import MeiriLog
+from meiri_state.api import MeiriState
 from utils.error_report import form_report
 from utils.logger import logger
 from utils.docs import get_class_docs
@@ -18,7 +21,7 @@ from meiri_sync.api import *
 from meiri_scheduler.action_api import *
 from meiri_scheduler.trigger_api import *
 from meiri_remote_login.api import *
-from meiri_daemon.api import *
+# from meiri_daemon.api import *
 
 
 class MainAPI(Resource):
@@ -73,16 +76,12 @@ add_resource(TriggerAPI, '/trigger')
 add_resource(TriggerName, '/trigger/<string:trigger_type>')
 add_resource(Sync, '/sync')
 add_resource(RemoteLoginAPI, '/remote_login')
-add_resource(DaemonAPI, '/daemon')
+# add_resource(DaemonAPI, '/daemon')
+add_resource(Account, '/account')
 add_resource(ErrorReport, '/error_report')
-if Constants.RUN_WITH_PREDICTS:
-    if Constants.RUN_IGNORE_TF_WARNINGS:
-        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-    logger.info('Loading Tensorflow...')
-    from gbk_predicts.api import Predicts
-
-    add_resource(Predicts, '/predicts')
-
+add_resource(MeiriLog, '/log')
+add_resource(MeiriState, '/state')
+add_resource(VipCodeGenerate, '/vip_code')
 apply_resource(api)
 
 CORS(app)
@@ -113,6 +112,8 @@ def api_after(res: Response):
         except Exception as e:
             logger.error(e)
             logger.error(f'data: {res.data}')
+            if res.data.decode(errors='ignores').startswith('<!DOCTYPE HTML'):
+                return res
             res.data = json.dumps(make_result(500, message=f'{e}')[0])
             db.start_error_report(form_report(e))
             res.status_code = 500

@@ -94,9 +94,9 @@ class SystemTaskPool:
     def disable(self):
         [self.sys_tasks[task].disable() for task in self.sys_tasks if isinstance(self.sys_tasks[task], Task)]
 
-    def update_uid(self, uid: int):
-        _ = [[action.update_uid(uid) for action in self.sys_tasks[task].actions if isinstance(action, ActionCycle)]
-             for task in self.sys_tasks if isinstance(self.sys_tasks[task], Task)]
+    # def update_uid(self, uid: int):
+    #     _ = [[action.update_uid(uid) for action in self.sys_tasks[task].actions if isinstance(action, ActionCycle)]
+    #          for task in self.sys_tasks if isinstance(self.sys_tasks[task], Task)]
 
 
 task_pool = TaskPool()

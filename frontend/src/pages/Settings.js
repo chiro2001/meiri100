@@ -1,6 +1,6 @@
 import React from "react"
 import Container from '@material-ui/core/Container';
-import { Button, MenuItem, FormControl, InputLabel, List, ListItem, ListItemSecondaryAction, ListItemText, Select, ListSubheader, Switch, Dialog, DialogTitle, DialogContent, Typography, DialogActions, Box, IconButton, DialogContentText } from "@material-ui/core";
+import { Button, MenuItem, FormControl, TextField, InputLabel, List, ListItem, ListItemSecondaryAction, ListItemText, Select, ListSubheader, Switch, Dialog, DialogTitle, DialogContent, Typography, DialogActions, Box, IconButton, DialogContentText } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import store from "../data/store";
 import { setConfig, setErrorInfo, setMessage } from "../data/action";
@@ -19,7 +19,8 @@ function Settings(props) {
   const [openUser, setOpenUser] = React.useState(false);
   const [openResetShop, setOpenResetShop] = React.useState(false);
   const [openSelectShop, setOpenSelectShop] = React.useState(false);
-  const [openNewShop, setOpenNewShop] = React.useState(false);
+  const [openVipCode, setOpenVipCode] = React.useState(false);
+  const [usernameVipCode, setUsernameVipCode] = React.useState('');
 
   const resetSettings = function () {
     let c = store.getState().config;
@@ -43,29 +44,11 @@ function Settings(props) {
       <ListItem button onClick={() => { setOpenUser(true); }}>
         <ListItemText primary="详细信息"></ListItemText>
       </ListItem>
-      <ListItem button>
-        <ListItemText primary="修改信息"></ListItemText>
-      </ListItem>
       <ListItem button onClick={() => {
         Config.clear();
         setTimeout(() => { window.location.reload(); }, 500);
       }}>
         <ListItemText primary="退出当前账号"></ListItemText>
-      </ListItem>
-      <ListSubheader>用户门店</ListSubheader>
-      <ListItem button onClick={() => { setOpenDaemon(true); }}>
-        <ListItemText primary="当前门店信息"></ListItemText>
-      </ListItem>
-      <ListItem button onClick={() => { setOpenResetShop(true); }}>
-        <ListItemText primary="解绑当前门店"></ListItemText>
-        <ListItemSecondaryAction><Typography variant="body1" color="textSecondary">{store.getState().daemon &&
-          store.getState().daemon.shop_info && store.getState().daemon.shop_info.branchName}</Typography></ListItemSecondaryAction>
-      </ListItem>
-      <ListItem button onClick={() => { setOpenSelectShop(true); }}>
-        <ListItemText primary="管理/切换当前已绑定门店"></ListItemText>
-      </ListItem>
-      <ListItem button onClick={() => { setOpenNewShop(true); }}>
-        <ListItemText primary="绑定并且切换到新的门店"></ListItemText>
       </ListItem>
       <ListSubheader>外观</ListSubheader>
       <ListItem>
@@ -87,9 +70,12 @@ function Settings(props) {
           </FormControl>
         </ListItemSecondaryAction>
       </ListItem>
-      <ListSubheader>数据管理</ListSubheader>
+      {store.getState().user.uid === 1 ? <ListItem button onClick={() => { setOpenVipCode(true); }}>
+        <ListItemText primary="创建验证码"></ListItemText>
+      </ListItem> : null}
+      {/* <ListSubheader>数据管理</ListSubheader>
       <ListItem button onClick={() => {
-        funDownload(store.getState().config.save(), `团购杀手配置数据(${new Date().toLocaleString()}).json`);
+        funDownload(store.getState().config.save(), `配置数据(${new Date().toLocaleString()}).json`);
       }}>
         <ListItemText primary="数据导出"></ListItemText>
       </ListItem>
@@ -146,7 +132,7 @@ function Settings(props) {
             store.dispatch(setConfig(c));
           }}></Switch>
         </ListItemSecondaryAction>
-      </ListItem>
+      </ListItem> */}
       <ListItem button onClick={() => setResetSettingsOpen(true)}>
         <ListItemText primary="回到默认设置"></ListItemText>
       </ListItem>
@@ -157,9 +143,6 @@ function Settings(props) {
     <ListInfo data={store.getState().user} open={openUser} keyNames={{
       username: '用户名', nick: '昵称', phone: '用户手机号', profile: '详细信息', state: '用户状态', created_at: '创建于', updated_at: '更新于'
     }} title="用户信息" onClose={() => { setOpenUser(false); }}></ListInfo>
-    <ListInfo data={store.getState().daemon} open={openDaemon} keyNames={{
-      cookies: '远程登录凭据', shop_info: "门店详细信息", solution_id: "解决方案编号"
-    }} title="门店信息" onClose={() => { setOpenDaemon(false); }}></ListInfo>
     <Dialog open={resetSettingsOpen} onClose={() => setResetSettingsOpen(false)}>
       <DialogTitle>
         回到默认设置
@@ -190,7 +173,23 @@ function Settings(props) {
         }}>确定</Button>
       </DialogActions>
     </Dialog>
-    <Dialog open={openResetShop} onClose={() => { setOpenResetShop(false); }}>
+    <Dialog open={openVipCode} onClose={() => { setOpenVipCode(false); }}>
+      <DialogContent>
+        <TextField value={usernameVipCode} onChange={e => {
+          setUsernameVipCode(e.target.value);
+        }}></TextField>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => { setOpenVipCode(false); }}>关闭</Button>
+        <Button onClick={async () => {
+          const resp = await api.request(`vip_code?username=${usernameVipCode}`, "GET");
+          if (resp.code == 200) {
+            store.dispatch(setMessage(resp.data.vip_code));
+          }
+        }}>确定</Button>
+      </DialogActions>
+    </Dialog>
+    {/* <Dialog open={openResetShop} onClose={() => { setOpenResetShop(false); }}>
       <DialogTitle>解绑当前门店</DialogTitle>
       <DialogContent>
         <Typography variant="body1">此操作将会解除门店和<b>本网站</b>的数据绑定，需要<b>重新绑定</b>才能使用网站功能。是否继续？</Typography>
@@ -248,14 +247,14 @@ function Settings(props) {
         </List>
       </DialogContent>
     </Dialog>
-    <Dialog open={openNewShop} onClose={() => { setOpenNewShop(false); }}>
+    <Dialog open={openVipCode} onClose={() => { setOpenVipCode(false); }}>
       <DialogContent>
         <RemoteLogin forceLogin onFinish={() => {
           console.log('onFinish');
           setTimeout(() => { window.location.reload(); }, 3000);
         }}></RemoteLogin>
       </DialogContent>
-    </Dialog>
+    </Dialog> */}
   </Container>)
 }
 

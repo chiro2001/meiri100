@@ -33,10 +33,10 @@ async function startFunc() {
       if (res.code === 200) {
         // console.log('saving user', res.data.user)
         store.dispatch(setUser(res.data.user));
-        const daemon = await api.request('daemon', 'GET');
-        if (daemon.code === 200 && daemon.data.uid) {
-          store.dispatch(setDaemon(daemon.data));
-        } else store.dispatch(setDaemon(null));
+        // const daemon = await api.request('daemon', 'GET');
+        // if (daemon.code === 200 && daemon.data.uid) {
+        //   store.dispatch(setDaemon(daemon.data));
+        // } else store.dispatch(setDaemon(null));
       }
     }
     // let c = api.download_config();

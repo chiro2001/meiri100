@@ -7,7 +7,7 @@ from meiri_exceptions import *
 from utils.time_formats import get_date_today, get_date_timestamp, get_timestamp_date
 
 daemon_types = [
-    "cookies", "shop_info", "solution_id", "reserve_date", "reserve_table", "room_stock"
+    "cookies",
 ]
 
 

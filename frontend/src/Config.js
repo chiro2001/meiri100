@@ -44,10 +44,10 @@ class Config {
       ],
       // 设置同步
       settings_async: true,
-      // 远程登录服务器
-      remote_login: {
-        server: "ws://127.0.0.1:8081"
-      },
+      // // 远程登录服务器
+      // remote_login: {
+      //   server: "ws://127.0.0.1:8081"
+      // },
       api_token: {}
     };
     this.data = this.data_default;

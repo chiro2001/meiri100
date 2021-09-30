@@ -24,6 +24,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import StorageIcon from '@material-ui/icons/Storage';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import PhonelinkIcon from '@material-ui/icons/Phonelink';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import {
   HashRouter as Router,
   // BrowserRouter as Router,
@@ -44,14 +45,15 @@ import { api } from "./api/api";
 
 import ListItemLink from "./components/ListItemLink";
 import Launch from "./pages/Launch";
-// import Settings from "./pages/Settings";
+import Settings from "./pages/Settings";
 import './App.css';
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, ListItem, Snackbar } from '@material-ui/core';
 import RemoteLogin from './pages/RemoteLogin';
 import Login from './pages/Login';
 // import Tasks from "./pages/Tasks";
 // import Predicts from './pages/Predicts';
-import User from './pages/User';
+import Manage from './pages/Manage';
+// import User from './pages/User';
 import ErrorBoundary from './ErrorBondary';
 
 const drawerWidth = 240;
@@ -221,26 +223,26 @@ export default function App() {
       last_data.user = state.user;
     }
   };
-  subscribers['Daemon'] = async function (state) {
-    if (state.daemon) {
-      if (JSON.stringify(state.daemon) != JSON.stringify(last_data.daemon)) {
-        forceUpdate();
-      }
-      last_data.daemon = state.daemon;
-      if (state.daemon.shop_info) {
-        if (title === titleDefault) {
-          setTitle(getShopTitle());
-        }
-      }
-    }
-    // if (state.daemon === false) {
-    //   store.dispatch(setDaemon(null));
-    //   const daemon = await api.request('daemon', 'GET');
-    //   if (daemon.code === 200 && daemon.data.uid) {
-    //     store.dispatch(setDaemon(daemon.data));
-    //   } else store.dispatch(setDaemon(null));
-    // }
-  };
+  // subscribers['Daemon'] = async function (state) {
+  //   if (state.daemon) {
+  //     if (JSON.stringify(state.daemon) != JSON.stringify(last_data.daemon)) {
+  //       forceUpdate();
+  //     }
+  //     last_data.daemon = state.daemon;
+  //     if (state.daemon.shop_info) {
+  //       if (title === titleDefault) {
+  //         setTitle(getShopTitle());
+  //       }
+  //     }
+  //   }
+  // if (state.daemon === false) {
+  //   store.dispatch(setDaemon(null));
+  //   const daemon = await api.request('daemon', 'GET');
+  //   if (daemon.code === 200 && daemon.data.uid) {
+  //     store.dispatch(setDaemon(daemon.data));
+  //   } else store.dispatch(setDaemon(null));
+  // }
+  // };
   // onMount & onUpdate
   React.useEffect(() => {
     const onWindowResize = () => {
@@ -289,12 +291,12 @@ export default function App() {
           <Typography variant="h6" noWrap className={classes.title}>
             {title}
           </Typography>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             onClick={() => { setOpenUser(true); }}
           >
             <AccountCircleIcon />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -318,6 +320,8 @@ export default function App() {
         <Divider />
         <List onClick={handleClickAction}>
           <ListItemLink to="/" primary="启动页" icon={<DashboardIcon />} />
+          <ListItemLink to="/manage" primary="管理" icon={<SupervisorAccountIcon />} />
+          <ListItemLink to="/settings" primary="设置" icon={<SettingsIcon />} />
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -325,6 +329,12 @@ export default function App() {
         <Switch>
           <Route path={"/"} exact={true}>
             <Launch />
+          </Route>
+          <Route path={"/manage"} exact={true}>
+            <Manage />
+          </Route>
+          <Route path={"/settings"} exact={true}>
+            <Settings />
           </Route>
         </Switch>
       </main>
@@ -334,78 +344,71 @@ export default function App() {
   const user = store.getState().user;
   const isNowLogining = !user && store.getState().config.data.api_token.access_token;
   let content = isNowLogining ? <Box>正在登录...</Box> : (user ? mainContent : <Login></Login>);
-  if ((!isNowLogining && user) && !store.getState().daemon) {
-    content = <Typography variant="body1">获取账户信息...</Typography>;
-    if (!requestingRemote) {
-      setRequesingRemote(true);
-      const daemon = api.request('remote_login', 'GET').then(daemon => {
-        if (daemon.code === 200 && daemon.data.uid) {
-          store.dispatch(setDaemon(daemon.data));
-        } else if (daemon.code === 200 && !daemon.data.uid) {
-          store.dispatch(setDaemon({}));
-        }
-      });
-    }
-  }
+  // if ((!isNowLogining && user) && !store.getState().daemon) {
+  //   content = <Typography variant="body1">获取账户信息...</Typography>;
+  //   if (!requestingRemote) {
+  //     setRequesingRemote(true);
+  //     const daemon = api.request('remote_login', 'GET').then(daemon => {
+  //       if (daemon.code === 200 && daemon.data.uid) {
+  //         store.dispatch(setDaemon(daemon.data));
+  //       } else if (daemon.code === 200 && !daemon.data.uid) {
+  //         store.dispatch(setDaemon({}));
+  //       }
+  //     });
+  //   }
+  // }
   //  else if ((!isNowLogining && user) && store.getState().daemon && !store.getState().daemon.uid) {
   //   content = <RemoteLogin></RemoteLogin>
   // }
-  // console.log('app.js user', user, 'content', content);
+  console.log('app.js user', user, 'content', content);
 
-  return (
-    <div className={classes.root}>
-      <ErrorBoundary>
-        <ThemeProvider theme={store.getState().config.theme}>
-          {content}
-          <Dialog fullWidth open={openUser} onClose={() => { setOpenUser(false); }}>
-            <DialogContent>
-              <User onClose={() => { setOpenUser(false); }}></User>
-            </DialogContent>
-          </Dialog>
-          <Dialog open={errorDialogInfo ? true : false} onClose={() => { setErrorDialogInfo(null); }}>
-            <DialogTitle>遇到错误</DialogTitle>
-            <DialogContent>
-              <Typography variant="body1">错误信息</Typography>
+  return (<div className={classes.root}>
+    <ErrorBoundary>
+      <ThemeProvider theme={store.getState().config.theme}>
+        {content}
+        <Dialog open={errorDialogInfo ? true : false} onClose={() => { setErrorDialogInfo(null); }}>
+          <DialogTitle>遇到错误</DialogTitle>
+          <DialogContent>
+            <Typography variant="body1">错误信息</Typography>
+            <Box component="div">
               <Box component="div">
-                <Box component="div">
-                  {() => {
-                    if (isIterator(errorDialogInfo) && typeof (errorDialogInfo) !== 'string') {
-                      return <List>
-                        {errorDialogInfo.map((d, i) => <ListItem key={d}>
-                          <code>{JSON.stringify(d) === '{}' ? d.toString() : JSON.stringify(d)}</code>
-                        </ListItem>)}
-                      </List>;
-                    } else {
-                      return <code>{JSON.stringify(errorDialogInfo) === '{}' ? errorDialogInfo.toString() : JSON.stringify(errorDialogInfo)}</code>;
-                    }
-                  }}
-                </Box>
+                {() => {
+                  if (isIterator(errorDialogInfo) && typeof (errorDialogInfo) !== 'string') {
+                    return <List>
+                      {errorDialogInfo.map((d, i) => <ListItem key={d}>
+                        <code>{JSON.stringify(d) === '{}' ? d.toString() : JSON.stringify(d)}</code>
+                      </ListItem>)}
+                    </List>;
+                  } else {
+                    return <code>{JSON.stringify(errorDialogInfo) === '{}' ? errorDialogInfo.toString() : JSON.stringify(errorDialogInfo)}</code>;
+                  }
+                }}
               </Box>
-            </DialogContent>
-            <DialogActions>
-              <Button color="primary" onClick={() => { window.location.reload() }}>刷新</Button>
-              <Button color="primary" onClick={() => { setErrorDialogInfo(null); }}>取消</Button>
-            </DialogActions>
-          </Dialog>
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            open={myMessage !== null}
-            autoHideDuration={3000}
-            // onClose={(e) => { console.log(e); }}
-            message={myMessage}
-            action={
-              <React.Fragment>
-                <IconButton size="small" aria-label="close" color="inherit" onClick={() => setMyMessage(null)}>
-                  <CloseIcon fontSize="small" />
-                </IconButton>
-              </React.Fragment>
-            }
-          />
-        </ThemeProvider>
-      </ErrorBoundary>
-    </div >
-  );
+            </Box>
+          </DialogContent>
+          <DialogActions>
+            <Button color="primary" onClick={() => { window.location.reload() }}>刷新</Button>
+            <Button color="primary" onClick={() => { setErrorDialogInfo(null); }}>取消</Button>
+          </DialogActions>
+        </Dialog>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          open={myMessage !== null}
+          autoHideDuration={3000}
+          // onClose={(e) => { console.log(e); }}
+          message={myMessage}
+          action={
+            <React.Fragment>
+              <IconButton size="small" aria-label="close" color="inherit" onClick={() => setMyMessage(null)}>
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
+      </ThemeProvider>
+    </ErrorBoundary>
+  </div >);
 }

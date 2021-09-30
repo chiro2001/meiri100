@@ -93,9 +93,11 @@ class Constants:
         # 'user_room_stock': 10.2,
         # 根据库存信息建立任务
         # 'user_stock_check': 3
+        'user_get_task': 5
     } if ENVIRONMENT == 'release' else {
         # 'user_room_stock': 6,
         # 'user_stock_check': 3
+        'user_get_task': 5
     }
     # Schedule
     # 配置使用内存做 Job 储存，因为已经在数据库自己实现一套储存结构了

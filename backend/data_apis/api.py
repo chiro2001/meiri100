@@ -14,20 +14,29 @@ class API:
         self.username, self.password = username, password
         self.cookies = cookies
         # self.meiri = MeiRi(self.request_json)
-        self.meiri = MeiRi(self.request_json_cookies)
+        self.meiri = MeiRi(self.request_json_cookies, username=username, password=password)
 
     def init_data(self):
         if self.cookies is None:
             if self.password is None or self.password is None:
                 raise MeiRiError("Error args")
-            self.meiri.login(self.username, self.password)
+            resp = self.meiri.login(self.username, self.password)
+            if 'code' in resp and resp['code'] != 100:
+                logger.error(f"user: {self.username} login error {resp}")
+                return self
+            if 'cookies' in resp:
+                self.cookies = resp['cookies']
         return self
 
+    # @staticmethod
+    # def from_cookies(cookies: str):
+    #     if cookies is None:
+    #         raise MeiRiCookiesError("Got empty cookies")
+    #     return API(cookies=cookies).init_data()
+
     @staticmethod
-    def from_cookies(cookies: str):
-        if cookies is None:
-            raise MeiRiCookiesError("Got empty cookies")
-        return API(cookies=cookies).init_data()
+    def from_username_password(username: str, password: str):
+        return API(username=username, password=password)
 
     def request_no_302(self, url: str):
         resp = requests.get(url, headers={
@@ -95,6 +104,9 @@ class API:
         try:
             js = resp.json()
         except json.decoder.JSONDecodeError as e:
+            if len(resp.text) == 0:
+                # 没有数据
+                return None
             logger.error(f'Decode error: {url}, {e}')
             raise MeiRiError(resp.text)
         # if 'code' in js and (js['code'] != 200 and js['code'] != 0):
@@ -102,7 +114,8 @@ class API:
         #     logger.warning(js)
         #     raise MeiRiPermissionError(js)
         cookies_values = resp.cookies.get_dict()
-        js['cookies'] = ';'.join([f'{key}={cookies_values[key]}' for key in cookies_values]) + ';'
+        if isinstance(js, dict):
+            js['cookies'] = ';'.join([f'{key}={cookies_values[key]}' for key in cookies_values]) + ';'
         return js
 
 

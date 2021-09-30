@@ -7,9 +7,9 @@ export function setConfig(data) {
   };
 }
 
-export function setTasks(data) {
+export function setAccounts(data) {
   return dispatch => {
-    dispatch({ type: "SET_TASKS", data: data });
+    dispatch({ type: "SET_ACCOUNTS", data: data });
   };
 }
 

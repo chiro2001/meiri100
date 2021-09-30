@@ -35,7 +35,7 @@ export default class ErrorBoundary extends React.Component {
         <hr />
         {content}
         <p>对您造成的困扰我们表示抱歉，如果有其他需要解决的问题，请联系：</p>
-        <p>管理微信：<code>zhicheng1840</code> / 开发者邮箱：<a href="mailto:chiro2001@163.com">chiro2001@163.com</a> / 开发者微信：chiro2001</p>
+        <p>开发者邮箱：<a href="mailto:chiro2001@163.com">chiro2001@163.com</a> / 开发者微信：chiro2001</p>
         <hr></hr>
         <p>详细错误：</p>
         <code>{JSON.stringify(this.state.error)}</code>

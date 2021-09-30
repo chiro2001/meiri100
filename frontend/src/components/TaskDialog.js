@@ -7,7 +7,7 @@ import Actions, { wrapAction } from "../components/Actions";
 import { ActionTag, updateActionData, isActionModified } from "../components/Actions";
 import Triggers, { updateTriggerData, wrapTrigger } from "../components/Triggers";
 import { TriggerTag, isTriggerModified } from "../components/Triggers";
-import { setErrorInfo, setMessage, setTasks, updateTypes } from "../data/action";
+import { setErrorInfo, setMessage, setAccounts, updateTypes } from "../data/action";
 import store from "../data/store";
 import { arrayRemove, deepCopy, formatDateTime, getNewNumberString, isObjectValueEqual, objectUpdate, timedeltaUnits } from "../utils/utils";
 import { ActionData } from "./ListEdit";

@@ -8,7 +8,7 @@ from io import BytesIO
 
 import secrets
 from data_apis.api import API
-from meiri_daemon.daemon import DaemonBean, daemon
+# from meiri_daemon.daemon import DaemonBean, daemon
 from meiri_database.database import db, Constants
 from meiri_database.tools import get_next_exist_id, get_current_id
 from meiri_exceptions import MeiRiError, MeiRiPermissionError, MeiRiLoginError
@@ -125,24 +125,6 @@ class ActionCycle(Action):
 
     def get_timestamp(self):
         return year_month_to_timestamp(self.year, self.month)
-
-    def update_shop_id(self):
-        if self.shop_id is None:
-            if self.cookies is None:
-                cookies = db.daemon.load(self.uid, 'cookies')
-                cookies = cookies if cookies is None else cookies.get('data')
-                # T-O-D-O: Cookies校验
-                if cookies is None:
-                    self.next_uid()
-                    return
-                self.cookies = cookies
-            try:
-                api = API.from_cookies(self.cookies)
-            except MeiRiLoginError as e:
-                # 删除该cookies
-                db.daemon.delete(self.uid, data_type="cookies")
-                raise e
-            self.shop_id = api.shop_id
 
 
 # class ActionFetchFlowData(ActionCycle):
@@ -471,4 +453,3 @@ class ActionBackupData(ActionCycle):
 #
 #         self.start_branch()
 #         self.save(state=SystemDB.SERVICE_STOP)
-

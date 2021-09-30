@@ -1,5 +1,11 @@
+import asyncio
+import logging
+import random
+
 from data_apis.api import API
-from meiri_daemon.daemon import daemon, DaemonBean
+# from meiri_daemon.daemon import daemon, DaemonBean
+from meiri_account.action import get_tasks
+from meiri_database.database import db
 from meiri_database.tools import *
 from utils.time_formats import get_date_today
 
@@ -136,9 +142,61 @@ class ActionSimpleRun(Action):
 #         self.price_relative = state.get('price_relative')
 
 
+meiri_get_tasks_pool = {}
+
+
+# 如果一个管理账号存在被管理账号，
+# 就选择一个账号检查有无任务
+class ActionMeiriGetTasksCycle(Action):
+    def __init__(self, uid: int = None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.uid = uid
+        self.action_type = 'meiri_get_tasks'
+
+    def __setstate__(self, state: dict):
+        super(ActionMeiriGetTasksCycle, self).__setstate__(state)
+        self.uid = state.get('uid', self.uid)
+
+    def exec(self):
+        if self.uid is None:
+            logger.error(f"got none uid!")
+            return
+        if self.uid in meiri_get_tasks_pool:
+            logger.warning(f"meiri_get_task[{self.uid}] running!")
+            return
+        meiri_get_tasks_pool[self.uid] = True
+        try:
+            accounts = db.account.get_by_uid(self.uid)
+            if len(accounts) == 0:
+                raise RuntimeError
+            # 随机选择一个用户
+            account = random.choice(accounts)
+            logger.info(f"using {account}")
+            api = API.from_username_password(username=account['username'], password=account['password']).init_data()
+            if api.cookies is None:
+                logger.error(f"meiri_get_tasks uid: {self.uid} run failed (username {account['username']})")
+                db.log.log(self.uid, logging.ERROR, f"用户 {account['username']} 登录失败！无法检查任务列表情况！")
+                raise RuntimeError
+            tasks = api.meiri.get_tasks()
+            logger.info(f"got tasks: {tasks}")
+            if len(tasks) > 0:
+                # 来活了！
+                db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！")
+                loop = asyncio.get_event_loop()
+                loop.run_until_complete(get_tasks(accounts, tasks))
+            else:
+                db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
+        except RuntimeError:
+            pass
+        except Exception as e:
+            logger.error(f"meiri_get_tasks error {e.__class__.__name__} {str(e)[32:]}")
+        del meiri_get_tasks_pool[self.uid]
+
+
 action_types = {
     'base': Action,
     'simple_run': ActionSimpleRun,
+    'meiri_get_tasks': ActionMeiriGetTasksCycle
     # 'adjust_price': ActionPriceAdjust,
     # 'adjust_price_relative': ActionPriceAdjustRelative
 }

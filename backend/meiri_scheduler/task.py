@@ -138,7 +138,10 @@ class Task:
         self.tid = tid if (not (tid is None and name is None and
                                 triggers is None and actions is None)) else db.task_manager.get_next_tid()
         if self.tid is None:
-            self.tid = db.task_manager.get_current_tid()
+            # self.tid = db.task_manager.get_current_tid()
+            self.tid = db.task_manager.get_next_tid()
+            # logger.warning(f"got new tid: {self.tid}")
+        # logger.warning(f"tid now: {self.tid}")
         self.task_name = name if name is not None else self.get_name_by_actions()
         self._name = name
         self.jobs = []

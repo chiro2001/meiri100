@@ -7,7 +7,8 @@ from data_apis.api import API
 from meiri_account.action import get_tasks
 from meiri_database.database import db
 from meiri_database.tools import *
-from utils.time_formats import get_date_today
+from utils.email_sender import send_email
+from utils.time_formats import get_date_today, get_date_yesterday
 
 
 class Action:
@@ -148,9 +149,9 @@ meiri_get_tasks_pool = {}
 # 如果一个管理账号存在被管理账号，
 # 就选择一个账号检查有无任务
 class ActionMeiriGetTasksCycle(Action):
-    def __init__(self, uid: int = None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.uid = uid
+        self.uid = kwargs.get('uid', None)
         self.action_type = 'meiri_get_tasks'
 
     def __setstate__(self, state: dict):
@@ -158,6 +159,7 @@ class ActionMeiriGetTasksCycle(Action):
         self.uid = state.get('uid', self.uid)
 
     def exec(self):
+        # logger.warning(f"Run ActionMeiriGetTasksCycle()!")
         if self.uid is None:
             logger.error(f"got none uid!")
             return
@@ -168,7 +170,8 @@ class ActionMeiriGetTasksCycle(Action):
         try:
             accounts = db.account.get_by_uid(self.uid)
             if len(accounts) == 0:
-                raise RuntimeError
+                del meiri_get_tasks_pool[self.uid]
+                return
             # 随机选择一个用户
             account = random.choice(accounts)
             logger.info(f"using {account}")
@@ -176,7 +179,8 @@ class ActionMeiriGetTasksCycle(Action):
             if api.cookies is None:
                 logger.error(f"meiri_get_tasks uid: {self.uid} run failed (username {account['username']})")
                 db.log.log(self.uid, logging.ERROR, f"用户 {account['username']} 登录失败！无法检查任务列表情况！")
-                raise RuntimeError
+                del meiri_get_tasks_pool[self.uid]
+                return
             tasks = api.meiri.get_tasks()
             logger.info(f"got tasks: {tasks}")
             if len(tasks) > 0:
@@ -186,17 +190,65 @@ class ActionMeiriGetTasksCycle(Action):
                 loop.run_until_complete(get_tasks(accounts, tasks))
             else:
                 db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
-        except RuntimeError:
-            pass
         except Exception as e:
             logger.error(f"meiri_get_tasks error {e.__class__.__name__} {str(e)[32:]}")
         del meiri_get_tasks_pool[self.uid]
 
 
+class ActionMeiriReport(Action):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.uid = kwargs.get('uid', None)
+        self.action_type = 'meiri_report'
+
+    def __setstate__(self, state: dict):
+        super(ActionMeiriReport, self).__setstate__(state)
+        self.uid = state.get('uid', self.uid)
+
+    def exec(self):
+        # logger.warning(f"Run {self.__class__.__name__}()!")
+        if self.uid is None:
+            logger.error(f"got none uid!")
+            return
+        user = db.user.get_by_uid(self.uid)
+        email = user.get('profile', {}).get('contact', {}).get('email', None)
+        if email is None:
+            logger.warning(f"uid {self.uid} has empty email!")
+            return
+        config = db.sync.find_by_uid(self.uid)
+        # 默认开启
+        enabled = True
+        if config is not None:
+            if not config.get('enable_email', True):
+                enabled = False
+        if not enabled:
+            return
+        user = db.user.get_by_uid(self.uid)
+        # 获取统计信息, 1d
+        username_tasks = db.state.get_fetched_task(uid=self.uid, start=get_date_yesterday())
+        tasks = [ut.get('task', {}) for ut in username_tasks]
+        tasks_info = [f"用户: {ut.get('username')}; 标题: {ut.get('task', {}).get('order_title')[:10]}; "
+                      f"时间: {ut.get('task', {}).get('order_time')}; "
+                      f"标题: {ut.get('task', {}).get('title')}" for ut in username_tasks]
+        content = Constants.REPORT_EMAIL_CONTENT.format(
+            number=len(tasks),
+            content='\n'.join(tasks_info)
+        )
+        send_email(sender=Constants.EMAIL_SENDER,
+                   send_to=email,
+                   password=Constants.EMAIL_SMTP_PASSWORD,
+                   text=content,
+                   title_from=Constants.USERS_OWNER_USERNAME,
+                   title_to=f'亲爱的用户 {user.get("username")}',
+                   subject=Constants.REPORT_EMAIL_TITLE.format(date=get_date_today()))
+        db.log.log(self.uid, level=logging.INFO, text=f"向您的邮箱({email})发送了今日({get_date_today()})的报告邮件。")
+
+
 action_types = {
     'base': Action,
     'simple_run': ActionSimpleRun,
-    'meiri_get_tasks': ActionMeiriGetTasksCycle
+    'meiri_get_tasks': ActionMeiriGetTasksCycle,
+    'meiri_report': ActionMeiriReport
     # 'adjust_price': ActionPriceAdjust,
     # 'adjust_price_relative': ActionPriceAdjustRelative
 }

@@ -22,6 +22,13 @@ def get_date_tomorrow(date_now=None) -> str:
         return get_timestamp_date(1000 * (get_date_timestamp(date_now) + 60 * 60 * 24))
 
 
+def get_date_yesterday(date_now=None) -> str:
+    if date_now is None:
+        return get_timestamp_date(1000 * (datetime.datetime.today().timestamp() - 60 * 60 * 24))
+    else:
+        return get_timestamp_date(1000 * (get_date_timestamp(date_now) - 60 * 60 * 24))
+
+
 # weekday: Monday是0，Sunday是6
 def get_next_week_date(day: int) -> str:
     day_now = (datetime.datetime.now().weekday() + 1) % 7

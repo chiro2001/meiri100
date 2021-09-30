@@ -45,6 +45,8 @@ async def get_task(account: dict, task: dict, retry: int = 5):
             get_task_ok = True
             break
     if get_task_ok:
+        # db.state.increase_fetched_task(account['uid'])
+        db.state.record_fetched_task(account['uid'], task)
         db.log.log(account['uid'], logging.INFO, f"用户 {account['username']} "
                                                  f"获取任务 {task.get('title')}, "
                                                  f"获得积分 {task.get('task_price')}")

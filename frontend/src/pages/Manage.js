@@ -95,6 +95,14 @@ export default function Manage(props) {
                 setState({ requestingAccounts: false });
               }}>删除全部被管理账号</Button>
             </ListItem>
+            <ListItem>
+              <Button fullWidth disabled={(accounts && accounts.length === 0) || (accounts === null)} variant="outlined" onClick={async () => {
+                for (const account of accounts) {
+                  const resp = await api.request(`account?username=${account.username}&enabled=${0}`, "PATCH");
+                }
+                setState({ requestingAccounts: false });
+              }}>关闭全部被管理账号的管理</Button>
+            </ListItem>
           </List>
         </Container>
       </Grid>

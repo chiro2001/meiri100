@@ -21,6 +21,8 @@ from meiri_sync.api import *
 from meiri_scheduler.action_api import *
 from meiri_scheduler.trigger_api import *
 from meiri_remote_login.api import *
+
+
 # from meiri_daemon.api import *
 
 
@@ -41,6 +43,15 @@ class MainAPI(Resource):
 
 class DropData(Resource):
     def get(self):
+        db.rebase()
+        return make_result()
+
+
+class DropDataAuthed(Resource):
+    @auth_required_method
+    def get(self, uid: int):
+        if uid != 1:
+            return make_result(404)
         db.rebase()
         return make_result()
 
@@ -68,6 +79,8 @@ add_resource(Session, "/session")
 add_resource(Password, '/password')
 if Constants.RUN_WITH_DROP_DATA:
     add_resource(DropData, '/drop_data')
+else:
+    add_resource(DropDataAuthed, '/drop_data')
 add_resource(TaskManagerAPI, '/task')
 add_resource(TaskManagerTid, '/task/<int:tid>')
 add_resource(ActionAPI, '/action')

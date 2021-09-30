@@ -1,6 +1,6 @@
 import React from "react"
 import Container from '@material-ui/core/Container';
-import { Button, MenuItem, FormControl, TextField, InputLabel, List, ListItem, ListItemSecondaryAction, ListItemText, Select, ListSubheader, Switch, Dialog, DialogTitle, DialogContent, Typography, DialogActions, Box, IconButton, DialogContentText } from "@material-ui/core";
+import { Button, MenuItem, FormControl, TextField, InputLabel, List, ListItem, ListItemSecondaryAction, ListItemText, Select, ListSubheader, Switch, Dialog, DialogTitle, DialogContent, Typography, DialogActions, Box, IconButton, DialogContentText, Checkbox } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import store from "../data/store";
 import { setConfig, setErrorInfo, setMessage } from "../data/action";
@@ -21,6 +21,9 @@ function Settings(props) {
   const [openSelectShop, setOpenSelectShop] = React.useState(false);
   const [openVipCode, setOpenVipCode] = React.useState(false);
   const [usernameVipCode, setUsernameVipCode] = React.useState('');
+  const [emailOpen, setEmailOpen] = React.useState(false);
+  const [email, setEmail] = React.useState(store.getState().user.profile.contact.email);
+  const [ignored, forceUpdate] = React.useReducer(x => x + 1, 0);
 
   const resetSettings = function () {
     let c = store.getState().config;
@@ -43,6 +46,24 @@ function Settings(props) {
       </ListItem>
       <ListItem button onClick={() => { setOpenUser(true); }}>
         <ListItemText primary="详细信息"></ListItemText>
+      </ListItem>
+      <ListItem button onClick={() => { setEmailOpen(true); }}>
+        <ListItemText primary="修改邮箱"></ListItemText>
+        <ListItemSecondaryAction>
+          <Typography variant="body2" color="textSecondary">{email}</Typography>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
+        <ListItemText primary="通过邮箱接收运行报告"></ListItemText>
+        <ListItemSecondaryAction>
+          <Checkbox checked={store.getState().config.data.enable_email} onChange={(e) => {
+            let config = store.getState().config;
+            config.data.enable_email = !config.data.enable_email;
+            config.save();
+            store.dispatch(setConfig(config));
+            forceUpdate();
+          }}></Checkbox>
+        </ListItemSecondaryAction>
       </ListItem>
       <ListItem button onClick={() => {
         Config.clear();
@@ -136,9 +157,9 @@ function Settings(props) {
       <ListItem button onClick={() => setResetSettingsOpen(true)}>
         <ListItemText primary="回到默认设置"></ListItemText>
       </ListItem>
-      <ListItem button onClick={() => setDeleteDataOpen(true)}>
+      {/* <ListItem button onClick={() => setDeleteDataOpen(true)}>
         <ListItemText primary="删除所有数据"></ListItemText>
-      </ListItem>
+      </ListItem> */}
     </List>
     <ListInfo data={store.getState().user} open={openUser} keyNames={{
       username: '用户名', nick: '昵称', phone: '用户手机号', profile: '详细信息', state: '用户状态', created_at: '创建于', updated_at: '更新于'
@@ -158,7 +179,7 @@ function Settings(props) {
         }}>确定</Button>
       </DialogActions>
     </Dialog>
-    <Dialog open={deleteDataOpen} onClose={() => setDeleteDataOpen(false)}>
+    {/* <Dialog open={deleteDataOpen} onClose={() => setDeleteDataOpen(false)}>
       <DialogTitle>
         删除所有数据
       </DialogTitle>
@@ -172,7 +193,7 @@ function Settings(props) {
           window.location.reload();
         }}>确定</Button>
       </DialogActions>
-    </Dialog>
+    </Dialog> */}
     <Dialog open={openVipCode} onClose={() => { setOpenVipCode(false); }}>
       <DialogContent>
         <TextField value={usernameVipCode} onChange={e => {
@@ -186,6 +207,22 @@ function Settings(props) {
           if (resp.code == 200) {
             store.dispatch(setMessage(resp.data.vip_code));
           }
+        }}>确定</Button>
+      </DialogActions>
+    </Dialog>
+    <Dialog open={emailOpen} onClose={() => { setEmailOpen(false); }}>
+      <DialogTitle>更新邮箱</DialogTitle>
+      <DialogContent>
+        <TextField value={email} onChange={e => {
+          setEmail(e.target.value);
+        }}></TextField>
+      </DialogContent>
+      <DialogActions>
+        <Button color="primary" onClick={() => { setEmailOpen(false); }}>取消</Button>
+        <Button color="primary" onClick={async () => {
+          const resp = await api.request("user_info", "POST", { contact: { email } });
+          if (resp.code == 200)
+            window.location.reload();
         }}>确定</Button>
       </DialogActions>
     </Dialog>

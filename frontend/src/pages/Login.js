@@ -10,11 +10,14 @@ function LoginFrame(props) {
   const [state, setInnerState] = React.useState({
     username: "",
     password: "",
-    captcha: "",
+    vip_code: "",
+    email: '',
     actionType: 'login'
   });
   const refUsername = React.useRef();
   const refPassword = React.useRef();
+  const refEmail = React.useRef();
+  const refVipCode = React.useRef();
   const setState = (update) => setInnerState(objectUpdate(state, update));
   // style={{ display: "flex", justifyContent: 'center', alignItems: "center", flexDirection: "column", }}
   const actionLogin = state.actionType === 'login' ? true : false;
@@ -34,13 +37,13 @@ function LoginFrame(props) {
     } else {
       // 注册，注册成功则跳转登录
       const res = await api.request('user', 'POST', {
-        username: state.username, password: state.password
+        username: state.username, password: state.password, vip_code: state.vip_code, email: state.email
       });
       console.log(res);
       if (res.code === 200) {
         // 弹窗
         store.dispatch(setMessage("注册成功"));
-        setState({actionType: 'login'});
+        setState({ actionType: 'login' });
       }
     }
   }
@@ -62,9 +65,29 @@ function LoginFrame(props) {
       setState({ password: e.target.value });
     }} onKeyDown={e => {
       if (e.code === "Enter") {
-        handleAction();
+        if (actionLogin) {
+          handleAction();
+        } else {
+          refEmail.current.querySelector("input").focus();
+        }
       }
     }} />
+    <br /><br />
+    {actionLogin ? null : <>
+      <TextField fullWidth ref={refEmail} label="邮箱, 用于接收程序消息" variant="outlined" value={state.email} onChange={e => {
+        setState({ email: e.target.value });
+      }} onKeyDown={e => {
+        if (e.code === "Enter") {
+          refVipCode.current.querySelector("input").focus();
+        }
+      }} /><br /><br />
+      <TextField fullWidth ref={refVipCode} label="验证码" variant="outlined" value={state.vip_code} onChange={e => {
+        setState({ vip_code: e.target.value });
+      }} onKeyDown={e => {
+        if (e.code === "Enter") {
+          handleAction();
+        }
+      }} /></>}
     <Fade in={actionLogin} style={{ display: actionLogin ? "block" : "none" }} timeout={{ exit: 0, enter: 200 }}>
       <Box>
         <Box>

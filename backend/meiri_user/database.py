@@ -31,10 +31,10 @@ class UserDB(BaseDB):
             return False
         print('user_data', json_dumps_format(user_data))
         print('user', json_dumps_format(user))
+        dict_update(user_data, user)
         if 'created_at' in user_data:
             del user_data['created_at']
-        dict_update(user_data, user)
-        auto_time_update(self.col, {'uid': user}, user_data)
+        auto_time_update(self.col, {'uid': uid}, user_data)
         return True
 
     def get_by_uid(self, uid: int) -> dict or None:

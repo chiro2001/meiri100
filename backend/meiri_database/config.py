@@ -57,7 +57,8 @@ class Constants:
         'state': 'normal',
         'profile': {
             'contact': {
-                'github': USERS_OWNER_GITHUB
+                'github': USERS_OWNER_GITHUB,
+                'email': "chiro2001@163.com"
             }
         }
     }
@@ -93,11 +94,15 @@ class Constants:
         # 'user_room_stock': 10.2,
         # 根据库存信息建立任务
         # 'user_stock_check': 3
-        'user_get_task': 5
+        'user_get_task': 5,
+        # 统计信息发送时间(s)
+        'user_report': 60 * 60 * 24
     } if ENVIRONMENT == 'release' else {
         # 'user_room_stock': 6,
         # 'user_stock_check': 3
-        'user_get_task': 5
+        'user_get_task': 5,
+        'user_report': 60 * 60 * 24
+        # 'user_report': 60
     }
     # Schedule
     # 配置使用内存做 Job 储存，因为已经在数据库自己实现一套储存结构了
@@ -130,6 +135,12 @@ class Constants:
     PROC_DISMISS_DAEMON_INIT = "GBK_DAEMON_RUNNING_PID"
     # 兼容参数：raise 一个 Exception 时候的固定参数
     EXCEPTION_LOGIN = "No cookies!"
+    REPORT_EMAIL_TITLE = '''获取任务报告: {date}'''
+    REPORT_EMAIL_CONTENT = '''今日总共获取了 {number} 个任务。任务如下：
+{content}
+
+感谢您的使用。
+'''
 
 
 # 运行中静态数据

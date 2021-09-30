@@ -48,7 +48,8 @@ class Config {
       // remote_login: {
       //   server: "ws://127.0.0.1:8081"
       // },
-      api_token: {}
+      api_token: {},
+      enable_email: true
     };
     this.data = this.data_default;
     this.theme = this.theme_avaliable["默认主题"];

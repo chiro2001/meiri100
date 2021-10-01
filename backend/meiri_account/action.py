@@ -41,7 +41,7 @@ async def get_task(account: dict, task: dict, retry: int = 5):
     resp: dict = None
     for t in range(retry):
         resp = api.meiri.get_task(task)
-        if 'code' in resp and resp['code'] == 100:
+        if 'code' in resp and resp['code'] == 100 or resp['code'] is None:
             get_task_ok = True
             break
     if get_task_ok:

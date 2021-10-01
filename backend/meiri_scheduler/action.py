@@ -186,7 +186,12 @@ class ActionMeiriGetTasksCycle(Action):
             if len(tasks) > 0:
                 # 来活了！
                 db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！")
-                loop = asyncio.get_event_loop()
+                try:
+                    loop = asyncio.get_event_loop()
+                except RuntimeError as e:
+                    new_loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(new_loop)
+                    loop = asyncio.get_event_loop()
                 loop.run_until_complete(get_tasks(accounts, tasks))
             else:
                 db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")

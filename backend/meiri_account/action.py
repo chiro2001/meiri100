@@ -41,9 +41,10 @@ async def get_task(account: dict, task: dict, retry: int = 5):
     resp: dict = None
     for t in range(retry):
         resp = api.meiri.get_task(task)
-        if 'code' in resp and resp['code'] == 100 or resp['code'] is None:
+        if 'code' in resp and (resp['code'] == 100 or resp['code'] == 200):
             get_task_ok = True
             break
+    db.log.log(account['uid'], logging.WARNING, f"resp: {resp}")
     if get_task_ok:
         # db.state.increase_fetched_task(account['uid'])
         db.state.record_fetched_task(account['uid'], task)
@@ -64,6 +65,8 @@ async def get_tasks(accounts: list, tasks: list):
         if not account['enabled']:
             continue
         for task in tasks:
+            db.log.log(account['uid'], logging.INFO, f"分配任务：username-order_id="
+                                                     f"{account['username']}-{task['order_id']}")
             task_pool[f'{account["username"]}_{task["order_id"]}'] = get_task(account, task)
     for key in task_pool:
         await task_pool[key]

@@ -185,7 +185,8 @@ class ActionMeiriGetTasksCycle(Action):
             logger.info(f"got tasks: {tasks}")
             if len(tasks) > 0:
                 # 来活了！
-                db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！")
+                db.log.log(self.uid, logging.INFO, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！"
+                                                   f"分配给 {len(accounts)} 个账号...")
                 try:
                     loop = asyncio.get_event_loop()
                 except RuntimeError as e:
@@ -194,7 +195,8 @@ class ActionMeiriGetTasksCycle(Action):
                     loop = asyncio.get_event_loop()
                 loop.run_until_complete(get_tasks(accounts, tasks))
             else:
-                db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
+                # db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
+                pass
         except Exception as e:
             logger.error(f"meiri_get_tasks error {e.__class__.__name__} {str(e)[32:]}")
         del meiri_get_tasks_pool[self.uid]

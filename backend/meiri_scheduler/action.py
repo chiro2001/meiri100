@@ -8,6 +8,7 @@ from meiri_account.action import get_tasks
 from meiri_database.database import db
 from meiri_database.tools import *
 from utils.email_sender import send_email
+from utils.proxies import get_proxy, get_proxy_2
 from utils.time_formats import get_date_today, get_date_yesterday
 
 
@@ -158,48 +159,74 @@ class ActionMeiriGetTasksCycle(Action):
         super(ActionMeiriGetTasksCycle, self).__setstate__(state)
         self.uid = state.get('uid', self.uid)
 
+    async def exec_one(self, proxy: str):
+        try:
+            accounts = db.account.get_by_uid(self.uid)
+            if len(accounts) == 0:
+                # del meiri_get_tasks_pool[self.uid]
+                return
+            # 随机选择一个用户
+            account = random.choice(accounts)
+            logger.debug(f"using {proxy} {account.get('username')}")
+            api = API.from_username_password(username=account['username'], password=account['password']) \
+                .init_data(proxy=proxy)
+            if api.cookies is None:
+                logger.error(f"meiri_get_tasks uid: {self.uid} run failed (username {account['username']})")
+                db.log.log(self.uid, logging.ERROR, f"用户 {account['username']} 登录失败！无法检查任务列表情况！")
+                # del meiri_get_tasks_pool[self.uid]
+                return
+            tasks = api.meiri.get_tasks(proxy=proxy)
+            if len(tasks) > 0:
+                logger.info(f"got tasks: {tasks}")
+                # 来活了！
+                db.log.log(self.uid, logging.INFO, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！"
+                                                   f"分配给 {len(accounts)} 个账号...")
+                # try:
+                #     loop = asyncio.get_event_loop()
+                # except RuntimeError as e:
+                #     new_loop = asyncio.new_event_loop()
+                #     asyncio.set_event_loop(new_loop)
+                #     loop = asyncio.get_event_loop()
+                # loop.run_until_complete(get_tasks(accounts, tasks))
+                await get_tasks(accounts, tasks, proxy)
+            else:
+                # db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
+                pass
+        except Exception as e:
+            logger.error(f"meiri_get_tasks error {e.__class__.__name__} {str(e)[:20]}")
+        # del meiri_get_tasks_pool[self.uid]
+
     def exec(self):
         # logger.warning(f"Run ActionMeiriGetTasksCycle()!")
         if self.uid is None:
             logger.error(f"got none uid!")
             return
-        if self.uid in meiri_get_tasks_pool:
-            logger.warning(f"meiri_get_task[{self.uid}] running!")
-            return
-        meiri_get_tasks_pool[self.uid] = True
+        # if self.uid in meiri_get_tasks_pool:
+        #     logger.warning(f"meiri_get_task[{self.uid}] running!")
+        #     return
+        # meiri_get_tasks_pool[self.uid] = True
+        # 获取到 代理列表
+        proxies_pool = [None, *[get_proxy().get("proxy") for _ in range(Constants.PROXY_POOL_SIZE)], *get_proxy_2()]
+        logger.debug(f"got proxies: {proxies_pool}")
         try:
-            accounts = db.account.get_by_uid(self.uid)
-            if len(accounts) == 0:
-                del meiri_get_tasks_pool[self.uid]
-                return
-            # 随机选择一个用户
-            account = random.choice(accounts)
-            logger.info(f"using {account}")
-            api = API.from_username_password(username=account['username'], password=account['password']).init_data()
-            if api.cookies is None:
-                logger.error(f"meiri_get_tasks uid: {self.uid} run failed (username {account['username']})")
-                db.log.log(self.uid, logging.ERROR, f"用户 {account['username']} 登录失败！无法检查任务列表情况！")
-                del meiri_get_tasks_pool[self.uid]
-                return
-            tasks = api.meiri.get_tasks()
-            logger.info(f"got tasks: {tasks}")
-            if len(tasks) > 0:
-                # 来活了！
-                db.log.log(self.uid, logging.INFO, f"用户 {account['username']} 获取到 {len(tasks)} 个任务！"
-                                                   f"分配给 {len(accounts)} 个账号...")
-                try:
-                    loop = asyncio.get_event_loop()
-                except RuntimeError as e:
-                    new_loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(new_loop)
-                    loop = asyncio.get_event_loop()
-                loop.run_until_complete(get_tasks(accounts, tasks))
-            else:
-                # db.log.log(self.uid, logging.DEBUG, f"用户 {account['username']} 获取到空任务列表。")
-                pass
-        except Exception as e:
-            logger.error(f"meiri_get_tasks error {e.__class__.__name__} {str(e)[32:]}")
-        del meiri_get_tasks_pool[self.uid]
+            loop = asyncio.get_event_loop()
+        except RuntimeError as e:
+            new_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(new_loop)
+            loop = asyncio.get_event_loop()
+
+        async def run_all(tasks: list, args_list: list, kwargs_list: list):
+            task_pool = [None for _ in range(len(tasks))]
+            for i in range(len(tasks)):
+                task_pool[i] = tasks[i](*(args_list[i] if len(args_list) > i else []),
+                                        **(kwargs_list[i] if len(kwargs_list) > i else {}))
+            for task in task_pool:
+                await task
+
+        loop.run_until_complete(
+            run_all([self.exec_one for _ in range(len(proxies_pool))],
+                    [[proxy, ] for proxy in proxies_pool],
+                    [{} for _ in proxies_pool]))
 
 
 class ActionMeiriReport(Action):

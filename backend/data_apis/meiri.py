@@ -16,12 +16,12 @@ class MeiRi(APIComponent):
         # 对应网站的 uid
         self.uid: str = None
 
-    def login(self, username: str = None, password: str = None) -> dict:
+    def login(self, username: str = None, password: str = None, proxy: str = None) -> dict:
         self.username = username if username is not None else username
         self.password = password if password is not None else password
         resp = self.request_func(self.url_login, method='POST', data={
             'username': self.username, 'password': self.password
-        })
+        }, proxies=({'http': f"http://{proxy}", 'https': f"http://{proxy}"}) if proxy is not None else None)
         if 'code' in resp and resp['code'] == 100:
             if 'cookies' in resp:
                 self.cookies = resp['cookies']
@@ -29,12 +29,13 @@ class MeiRi(APIComponent):
                 self.uid = resp['uid']
         return resp
 
-    def get_tasks(self) -> list:
-        resp = self.request_func(self.url_get_tasks)
+    def get_tasks(self, proxy: str = None, **kwargs) -> list:
+        resp = self.request_func(self.url_get_tasks, proxies=(
+            {'http': f"http://{proxy}", 'https': f"http://{proxy}"}) if proxy is not None else None, **kwargs)
         if resp is None:
             return []
         return resp
 
-    def get_task(self, task: dict):
-        resp = self.request_func(self.url_get_task % (task['order_id'], self.uid, task['order_type']))
+    def get_task(self, task: dict, **kwargs):
+        resp = self.request_func(self.url_get_task % (task['order_id'], self.uid, task['order_type']), **kwargs)
         return resp

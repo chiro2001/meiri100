@@ -141,6 +141,10 @@ class Constants:
 
 感谢您的使用。
 '''
+    # Proxy
+    PROXY_POOL_API = 'http://shimamura.chiro.work:5010/' if ENVIRONMENT == 'dev' else 'http://127.0.0.1:5010/'
+    PROXY_POOL_SIZE = 10
+    PROXY_POOL_API_2 = 'http://proxy.httpdaili.com/apinew.asp?sl=3&noinfo=true&text=1&ddbh=2056417805082667433'
 
 
 # 运行中静态数据

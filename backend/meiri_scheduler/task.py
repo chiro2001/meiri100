@@ -210,6 +210,10 @@ class Task:
     @staticmethod
     def from_task_data(data: dict):
         task = Task()
+        if 'triggers' in data:
+            for i in range(len(data['triggers'])):
+                if 'version' in data['triggers'][i] and data['triggers'][i]['version'] > 1:
+                    data['triggers'][i]['version'] = 1
         task.set_task_data(data)
         return task
 

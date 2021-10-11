@@ -27,20 +27,21 @@ task_ = {
 }
 
 
-async def get_task(account: dict, task: dict, retry: int = 5):
+async def get_task(account: dict, task: dict, retry: int = 5, proxy: str = None):
+    proxies = ({'http': f"http://{proxy}", 'https': f"http://{proxy}"}) if proxy is not None else None
     api: API = API.from_username_password(username=account['username'], password=account['password'])
     for t in range(retry):
-        api.init_data()
+        api.init_data(proxies=proxies)
         if api.cookies is not None:
             break
         time.sleep(1)
     if api.cookies is None:
-        db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} 尝试登录失败！无法获取任务！")
+        db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} 尝试登录失败！无法获取任务！[代理:{proxy}]")
         return
     get_task_ok: bool = False
     resp: dict = None
     for t in range(retry):
-        resp = api.meiri.get_task(task)
+        resp = api.meiri.get_task(task, proxies=proxies)
         if 'code' in resp and (resp['code'] == 100 or resp['code'] == 200):
             get_task_ok = True
             break
@@ -56,17 +57,18 @@ async def get_task(account: dict, task: dict, retry: int = 5):
         logger.error(f"get_task failed for {account['username']}! {resp}")
         db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} "
                                                   f"获取任务 {task.get('title')} 错误: "
-                                                  f"{resp['msg'] if 'msg' in resp else resp}")
+                                                  f"{resp['msg'] if 'msg' in resp else resp} [代理:{proxy}]")
 
 
-async def get_tasks(accounts: list, tasks: list):
+async def get_tasks(accounts: list, tasks: list, proxy: str = None):
+    logger.warning(f"{proxy}")
     task_pool = {}
     for account in accounts:
         if not account['enabled']:
             continue
         for task in tasks:
             db.log.log(account['uid'], logging.INFO, f"分配任务：username-order_id="
-                                                     f"{account['username']}-{task['order_id']}")
-            task_pool[f'{account["username"]}_{task["order_id"]}'] = get_task(account, task)
+                                                     f"{account['username']}-{task['order_id']} [代理:{proxy}]")
+            task_pool[f'{account["username"]}_{task["order_id"]}'] = get_task(account, task, proxy=proxy)
     for key in task_pool:
         await task_pool[key]

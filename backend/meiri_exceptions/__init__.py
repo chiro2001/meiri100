@@ -4,7 +4,7 @@ from utils.logger import logger
 class MeiRiBaseError(Exception):
     def __init__(self, data: str = None):
         self.data = data
-        logger.error(self.__str__())
+        logger.error(self.__str__()[:20] if len(self.__str__()) >= 17 else self.__str__())
 
     def __str__(self):
         return f"Error: {self.__class__.__name__}{(' : %s' % self.data) if self.data is not None else ''}"

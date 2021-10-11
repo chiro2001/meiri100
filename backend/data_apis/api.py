@@ -16,11 +16,11 @@ class API:
         # self.meiri = MeiRi(self.request_json)
         self.meiri = MeiRi(self.request_json_cookies, username=username, password=password)
 
-    def init_data(self):
+    def init_data(self, **kwargs):
         if self.cookies is None:
             if self.password is None or self.password is None:
                 raise MeiRiError("Error args")
-            resp = self.meiri.login(self.username, self.password)
+            resp = self.meiri.login(self.username, self.password, **kwargs)
             if 'code' in resp and resp['code'] != 100:
                 logger.error(f"user: {self.username} login error {resp}")
                 return self

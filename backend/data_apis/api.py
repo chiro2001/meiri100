@@ -28,11 +28,11 @@ class API:
                 self.cookies = resp['cookies']
         return self
 
-    # @staticmethod
-    # def from_cookies(cookies: str):
-    #     if cookies is None:
-    #         raise MeiRiCookiesError("Got empty cookies")
-    #     return API(cookies=cookies).init_data()
+    @staticmethod
+    def from_cookies(cookies: str):
+        if cookies is None:
+            raise MeiRiCookiesError("Got empty cookies")
+        return API(cookies=cookies)
 
     @staticmethod
     def from_username_password(username: str, password: str):

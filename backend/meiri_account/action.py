@@ -26,18 +26,26 @@ task_ = {
     'task_type_name': '作品点赞'
 }
 
+got_tasks = {}
 
-async def get_task(account: dict, task: dict, retry: int = 5, proxy: str = None):
+
+async def get_task(account: dict, task: dict, cookies: str = None, retry: int = 5, proxy: str = None):
     proxies = ({'http': f"http://{proxy}", 'https': f"http://{proxy}"}) if proxy is not None else None
-    api: API = API.from_username_password(username=account['username'], password=account['password'])
-    for t in range(retry):
-        api.init_data(proxies=proxies)
-        if api.cookies is not None:
-            break
-        time.sleep(1)
-    if api.cookies is None:
-        db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} 尝试登录失败！无法获取任务！[代理:{proxy}]")
+    if f"{account['username']}_{task.get('title')}" in got_tasks:
+        # logger.warning(f"Jumpping: " + f"{account['username']}_{task.get('title')}")
         return
+    if cookies:
+        api: API = API.from_cookies(cookies)
+    else:
+        api: API = API.from_username_password(username=account['username'], password=account['password'])
+        for t in range(retry):
+            api.init_data(proxies=proxies)
+            if api.cookies is not None:
+                break
+            time.sleep(1)
+        if api.cookies is None:
+            db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} 尝试登录失败！无法获取任务！[代理:{proxy}]")
+            return
     get_task_ok: bool = False
     resp: dict = None
     for t in range(retry):
@@ -48,7 +56,7 @@ async def get_task(account: dict, task: dict, retry: int = 5, proxy: str = None)
     db.log.log(account['uid'], logging.WARNING, f"resp: {resp}")
     if get_task_ok:
         # db.state.increase_fetched_task(account['uid'])
-        db.state.record_fetched_task(account['uid'], task)
+        db.state.record_fetched_task(account['uid'], username=account['username'], task=task)
         db.log.log(account['uid'], logging.INFO, f"用户 {account['username']} "
                                                  f"获取任务 {task.get('title')}, "
                                                  f"获得积分 {task.get('task_price')}")
@@ -58,17 +66,29 @@ async def get_task(account: dict, task: dict, retry: int = 5, proxy: str = None)
         db.log.log(account['uid'], logging.ERROR, f"用户 {account['username']} "
                                                   f"获取任务 {task.get('title')} 错误: "
                                                   f"{resp['msg'] if 'msg' in resp else resp} [代理:{proxy}]")
+        if 'msg' in resp and '未查询到任务' in resp['msg']:
+            got_tasks[f"{account['username']}_{task.get('title')}"] = True
 
 
-async def get_tasks(accounts: list, tasks: list, proxy: str = None):
-    logger.warning(f"{proxy}")
+async def get_tasks(accounts: list, tasks: list, proxy: str = None, proxy_list: list = None):
+    logger.warning(f"{proxy if proxy is not None else proxy_list}")
     task_pool = {}
     for account in accounts:
         if not account['enabled']:
             continue
         for task in tasks:
             db.log.log(account['uid'], logging.INFO, f"分配任务：username-order_id="
-                                                     f"{account['username']}-{task['order_id']} [代理:{proxy}]")
-            task_pool[f'{account["username"]}_{task["order_id"]}'] = get_task(account, task, proxy=proxy)
+                                                     f"{account['username']}-{task['order_id']} "
+                                                     f"[代理:{proxy if proxy is not None else f'({len(proxy_list)}'})]")
+            if proxy is not None:
+                task_pool[f'{account["username"]}_{task["order_id"]}'] = get_task(account, task, proxy=proxy,
+                                                                                  cookies=account.get('cookies'))
+            else:
+                if proxy_list is None:
+                    proxy_list = [None]
+                for p in proxy_list:
+                    task_pool[f'{account["username"]}_{task["order_id"]}_{p}'] = get_task(account, task, proxy=p,
+                                                                                          cookies=account.get(
+                                                                                              'cookies'))
     for key in task_pool:
         await task_pool[key]

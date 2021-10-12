@@ -16,12 +16,14 @@ class MeiRi(APIComponent):
         # 对应网站的 uid
         self.uid: str = None
 
-    def login(self, username: str = None, password: str = None, proxy: str = None) -> dict:
+    def login(self, username: str = None, password: str = None, proxy: str = None, proxies: dict = None) -> dict:
         self.username = username if username is not None else username
         self.password = password if password is not None else password
+        if proxies is None and proxy is not None:
+            proxies = ({'http': f"http://{proxy}", 'https': f"http://{proxy}"})
         resp = self.request_func(self.url_login, method='POST', data={
             'username': self.username, 'password': self.password
-        }, proxies=({'http': f"http://{proxy}", 'https': f"http://{proxy}"}) if proxy is not None else None)
+        }, proxies=proxies)
         if 'code' in resp and resp['code'] == 100:
             if 'cookies' in resp:
                 self.cookies = resp['cookies']
